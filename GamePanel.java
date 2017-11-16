@@ -6,8 +6,8 @@ import java.text.DecimalFormat;
 
 public class GamePanel extends JPanel implements Runnable {
 
-	private static final int PWIDTH = 500;
-	private static final int PHEIGHT = 400; //tamaño del panel
+	private static final int PWIDTH = 640;
+	private static final int PHEIGHT = PWIDTH/ 12 * 9; //tamaño del panel
 
 	private Thread animator; //controla la animación
 	private volatile boolean end = false;
@@ -16,7 +16,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 
 	public GamePanel(){
-		setBackground(Color.white);
+		setBackground(Color.black);
 		setPreferredSize(new Dimension(PWIDTH,PHEIGHT));
 		setFocusable(true);
 		requestFocus();
@@ -67,7 +67,7 @@ public class GamePanel extends JPanel implements Runnable {
                 dbg = dbImage.getGraphics();
             }
         }
-      dbg.setColor(Color.white);
+      dbg.setColor(Color.black);
       dbg.fillRect(0,0,PWIDTH,PHEIGHT);
       game.draw(dbg);
 
@@ -87,7 +87,7 @@ public class GamePanel extends JPanel implements Runnable {
 				dbg = dbImage.getGraphics();
 			}
 		}
-		dbg.setColor(Color.white);
+		dbg.setColor(Color.black);
 		dbg.fillRect(0,0,PWIDTH,PHEIGHT);
 		dbg.setColor(Color.black);
 

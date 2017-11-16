@@ -33,6 +33,7 @@ import java.util.*;
 public class MenuState implements GameState {
 	GameContext c;
 	Font font;
+	Font font2;
 	Color color;
 
 	public MenuState(){}
@@ -42,18 +43,42 @@ public class MenuState implements GameState {
 	}
 
 	public void draw(Graphics g){
-		font=new Font("Verdana", Font.BOLD, 16);
-		color=new Color(122, 24, 232);
-		g.setColor(color);
+		g.setColor(Color.white);
+		font =new Font("arial", 1, 50);
+		font2 =new Font("arial", 1, 30);
+
+
 		g.setFont(font);
-		//g.drawImage(ImageLoader.getImageLoader().getBackground(),0,0,null);
-	  g.drawString("Da click para comenzar",80, 200);
+		g.drawString("Menu", 240, 70);
+
+		g.setFont(font2);
+		g.drawString("Play", 270, 190);
+		g.drawString("Help", 270, 290);
+		g.drawString("Quit", 270, 390);
+
+		g.drawRect(210, 150, 200, 64);
+
+		g.drawRect(210, 250, 200, 64);
+
+		g.drawRect(210, 350, 200, 64);
 	}
 
 
   public void processKey(KeyEvent e){}
-  public void clickMouse(MouseEvent e) {load();}
+
+  public void clickMouse(MouseEvent e) {
+		int mx = e.getX();
+		int my = e.getY();
+
+		if (mouseOver(mx, my, 210, 150, 200, 64)){ load(); }
+		if (mouseOver(mx, my, 210, 350, 200, 64)){ System.exit(0); }//quit button
+		if (mouseOver(mx, my, 210, 250, 200, 64)){	help(); }
+	}
+
+
+
   public void menu(){}
+	public void help(){ c.setState(c.getHelpState()); }
   public void load(){	c.setState(c.getLoadState());}
   public void winter(){}
   public void spring(){}
@@ -63,5 +88,13 @@ public class MenuState implements GameState {
   public void win(){}
   public void end(){}
   public void setContext(GameContext cont){ this.c = cont;}
+
+	private boolean mouseOver(int mx, int my,int x, int y, int width, int heigth){
+		if (mx > x && mx < x + width){
+				return (my >  y  && my < y + heigth);
+		}else{
+				return false;
+		}
+	}
 
 }

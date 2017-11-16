@@ -66,6 +66,7 @@ public class SummerState implements GameState {
 
     public void clickMouse(MouseEvent e) {}
     public void menu(){}
+		public void help(){}
     public void load(){}
     public void winter(){}
     public void spring(){}

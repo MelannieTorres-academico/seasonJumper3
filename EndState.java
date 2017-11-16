@@ -53,6 +53,7 @@ public class EndState implements GameState {
     public void processKey(KeyEvent e){}
     public void clickMouse(MouseEvent e) {}
     public void menu(){}
+		public void help(){}
     public void load(){}
     public void winter(){}
     public void spring(){}

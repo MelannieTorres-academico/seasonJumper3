@@ -60,6 +60,7 @@ public class LoadState implements GameState {
 		  public void processKey(KeyEvent e){}
 		  public void clickMouse(MouseEvent e) {}
       public void menu(){}
+      public void help(){}
       public void load(){}
       public void winter(){c.setState(c.getWinterState());}
       public void spring(){}

@@ -31,6 +31,7 @@ import java.util.*;
 public class GameContext {
 
 	GameState menu;
+	GameState help;
 	GameState load;
 	GameState winter;
 	GameState spring;
@@ -45,6 +46,7 @@ public class GameContext {
 	public GameContext(){
 
 		menu	  			= Factory.getInstance().createState("menu");
+		help	  			= Factory.getInstance().createState("help");
 		load  				= Factory.getInstance().createState("load");
 		winter 			  = Factory.getInstance().createState("winter");
 		spring 			  = Factory.getInstance().createState("spring");
@@ -56,6 +58,7 @@ public class GameContext {
 
 
 		menu.setContext(this);
+		help.setContext(this);
 		load.setContext(this);
 		winter.setContext(this);
     spring.setContext(this);
@@ -68,7 +71,8 @@ public class GameContext {
 		currentState  = menu;
 	}
 
-  public GameState getMenuState(){return menu;}
+	public GameState getMenuState(){return menu;}
+	public GameState getHelpState(){return help;}
   public GameState getLoadState(){return load;}
   public GameState getWinterState(){return winter;}
   public GameState getSpringState(){return spring;}
@@ -85,7 +89,8 @@ public class GameContext {
 	public void draw(Graphics g){	currentState.draw(g);}
 
 
-  public void menu(){currentState.menu(); }
+	public void menu(){currentState.menu(); }
+	public void help(){currentState.help(); }
   public void load(){currentState.load(); }
   public void winter(){currentState.winter(); }
   public void spring(){currentState.spring(); }

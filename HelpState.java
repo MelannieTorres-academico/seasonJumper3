@@ -30,36 +30,49 @@ import java.awt.Font;
 import java.io.*;
 import java.util.*;
 
-public class WinState implements GameState {
-    private int i=0;
-    private int player;
+public class HelpState implements GameState {
 	  GameContext c;
-    private Color color;
-    private Font font;
+		Font font;
+		Font font2;
+		Font font3;
 
-    public WinState(){
-    }
-		public WinState(GameContext c){
+
+    public HelpState(){}
+
+		public HelpState(GameContext c){
 			this.c = c;
 		}
 
-  		public void draw(Graphics g){
-  			i++;
-        color=new Color(122, 24, 232);
-        font=new Font("Verdana", Font.BOLD, 18);
-        g.setColor(color);
-        g.setFont(font);
-        //g.drawImage(ImageLoader.getImageLoader().getBackground(),0,0,null);
-        //g.drawImage(ImageLoader.getImageLoader().getFireworks(),0,0,null);
-  		  g.drawString("Ganaste",300, 20);
-  			if (i>200){
-  				end();
-  			}
-  		}
+		public void draw(Graphics g){
 
-      public void processKey(KeyEvent e){}
-      public void clickMouse(MouseEvent e) {}
-      public void menu(){}
+				font  = new Font("arial", 1, 50);
+				font2 = new Font("arial", 1, 30);
+				font3 = new Font("arial", 1, 20);
+				g.setColor(Color.white);
+
+				g.setFont(font);
+				g.drawString("HELP", 240, 70);
+
+
+				g.setFont(font3);
+				g.drawString("Use the arrows keys to get to the yellow,", 100, 200);
+				g.drawString("beware of the monsters along the way!", 100, 225);
+
+				g.setFont(font2);
+				g.drawRect(210, 350, 200, 64);
+				g.drawString("Back", 270, 390);
+
+		}
+
+		  public void processKey(KeyEvent e){}
+		  public void clickMouse(MouseEvent e) {
+				int mx = e.getX();
+				int my = e.getY();
+				if(mouseOver(mx, my, 210, 350, 200, 64)){ menu(); }
+			}
+
+
+      public void menu(){c.setState(c.getMenuState());}
       public void help(){}
       public void load(){}
       public void winter(){}
@@ -68,6 +81,16 @@ public class WinState implements GameState {
       public void autumn(){}
       public void lose(){}
       public void win(){}
-      public void end(){c.setState(c.getEndState());}
+      public void end(){}
       public void setContext(GameContext cont){ this.c = cont;}
+
+			private boolean mouseOver(int mx, int my,int x, int y, int width, int heigth){
+				if (mx > x && mx < x + width){
+						return (my >  y  && my < y + heigth);
+				}else{
+						return false;
+				}
+			}
+
+
 }

@@ -66,7 +66,8 @@ public class AutumnState implements GameState {
 
     public void clickMouse(MouseEvent e) {}
     public void menu(){}
-    public void load(){}
+    public void help(){}
+		public void load(){}
     public void winter(){c.setState(c.getWinterState());}
     public void spring(){}
     public void summer(){}

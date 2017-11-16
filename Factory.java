@@ -16,6 +16,9 @@ public class Factory{
       if(tag.equalsIgnoreCase("menu")){
         return new MenuState();
       }
+      if(tag.equalsIgnoreCase("help")){
+        return new HelpState();
+      }
       if(tag.equalsIgnoreCase("load")){
         return new LoadState();
       }
