@@ -36,11 +36,12 @@ public class GameContext {
 	GameState winter;
 	GameState spring;
 	GameState summer;
-  GameState autumn;
+	GameState autumn;
   GameState lose;
   GameState win;
 	GameState end;
 	GameState currentState;
+	Handler 	handler;
 
 
 	public GameContext(){
@@ -48,25 +49,30 @@ public class GameContext {
 		menu	  			= Factory.getInstance().createState("menu");
 		help	  			= Factory.getInstance().createState("help");
 		load  				= Factory.getInstance().createState("load");
-		winter 			  = Factory.getInstance().createState("winter");
-		spring 			  = Factory.getInstance().createState("spring");
-		summer 				= Factory.getInstance().createState("summer");
-    autumn 				= Factory.getInstance().createState("autumn");
+		winter			  = Factory.getInstance().createState("winter");
+		spring			  = Factory.getInstance().createState("spring");
+		summer			  = Factory.getInstance().createState("summer");
+		autumn			  = Factory.getInstance().createState("autumn");
     lose 					= Factory.getInstance().createState("lose");
     win 					= Factory.getInstance().createState("win");
 		end 					= Factory.getInstance().createState("end");
-
+		handler				= Factory.getInstance().createHandler();
 
 		menu.setContext(this);
 		help.setContext(this);
 		load.setContext(this);
 		winter.setContext(this);
-    spring.setContext(this);
-    summer.setContext(this);
+		spring.setContext(this);
+		summer.setContext(this);
 		autumn.setContext(this);
     lose.setContext(this);
     win.setContext(this);
 		end.setContext(this);
+
+		winter.setHandler(handler);
+		spring.setHandler(handler);
+		summer.setHandler(handler);
+		autumn.setHandler(handler);
 
 		currentState  = menu;
 	}
@@ -74,17 +80,19 @@ public class GameContext {
 	public GameState getMenuState(){return menu;}
 	public GameState getHelpState(){return help;}
   public GameState getLoadState(){return load;}
-  public GameState getWinterState(){return winter;}
-  public GameState getSpringState(){return spring;}
-  public GameState getSummerState(){return summer;}
-  public GameState getAutumnState(){return autumn;}
+	public GameState getWinterState(){return winter;}
+	public GameState getSpringState(){return spring;}
+	public GameState getSummerState(){return summer;}
+	public GameState getAutumnState(){return autumn;}
   public GameState getLoseState(){return lose;}
   public GameState getWinState(){return win;}
   public GameState getEndState(){return end;}
 
 	public void setState(GameState s){ this.currentState = s; }
 	public void setContext(GameContext cont){}//this.context = cont;}
+	public void setHandler(Handler h){}//this.context = cont;}
 	public void processKey(KeyEvent e){	currentState.processKey(e);	}
+	public void keyReleased(KeyEvent e){currentState.keyReleased(e);}
 	public void clickMouse(MouseEvent e) {	currentState.clickMouse(e); }
 	public void draw(Graphics g){	currentState.draw(g);}
 
@@ -92,10 +100,10 @@ public class GameContext {
 	public void menu(){currentState.menu(); }
 	public void help(){currentState.help(); }
   public void load(){currentState.load(); }
-  public void winter(){currentState.winter(); }
-  public void spring(){currentState.spring(); }
-  public void summer(){currentState.summer(); }
-  public void autumn(){currentState.autumn(); }
+	public void winter(){currentState.winter(); }
+	public void spring(){currentState.spring(); }
+	public void summer(){currentState.summer(); }
+	public void autumn(){currentState.autumn(); }
   public void lose(){currentState.lose(); }
   public void win(){currentState.win(); }
   public void end(){currentState.end(); }

@@ -54,22 +54,26 @@ public class LoadState implements GameState {
 			if (i<100)    { g.drawString("3",200, 200); }
 			else if(i<200){ g.drawString("2",200, 200); }
 			else if(i<300){ g.drawString("1",200, 200); }
-			else{ winter(); }
+			else{
+        winter();
+      }
 		}
 
 		  public void processKey(KeyEvent e){}
+      public void keyReleased(KeyEvent e){}
 		  public void clickMouse(MouseEvent e) {}
       public void menu(){}
       public void help(){}
       public void load(){}
       public void winter(){c.setState(c.getWinterState());}
-      public void spring(){}
-      public void summer(){}
-      public void autumn(){}
+  		public void spring(){}
+  		public void summer(){}
+  		public void autumn(){}
       public void lose(){}
       public void win(){}
       public void end(){}
       public void setContext(GameContext cont){ this.c = cont;}
+      public void setHandler(Handler h){}
 
 
 }

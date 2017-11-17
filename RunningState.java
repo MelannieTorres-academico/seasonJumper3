@@ -21,7 +21,7 @@
  *
  *
  */
-
+/*
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -31,19 +31,22 @@ import java.io.*;
 import java.util.*;
 import java.awt.Font;
 
-public class SpringState implements GameState {
+public class RunningState implements GameState {
 	private Scanner scan = new Scanner(System.in); // for user input
 	private Color color;
 	private Font font;
 	GameContext c;
-	Handler handler;
+	private boolean[] keyDown=new boolean[4];
 
-
-	  public SpringState(){
+	  public RunningState(){
+			keyDown[0] = false;
+			keyDown[1] = false;
+			keyDown[2] = false;
+			keyDown[3] = false;
 
 		}
 
-		public SpringState(GameContext c){
+		public RunningState(GameContext c){
 			this.c = c;
 		}
 
@@ -52,8 +55,8 @@ public class SpringState implements GameState {
 			font=new Font("Verdana", Font.BOLD, 18);
 			g.setFont(font);
 			g.setColor(color);
-			g.drawImage(ImageLoader.getImageLoader().getImage("spring"),0,0,null);
-			g.drawString("Spring",15,40);
+			g.drawImage(ImageLoader.getImageLoader().getImage("autumn"),0,0,null);
+			g.drawString("Running",15,40);
 
 
 		}
@@ -61,24 +64,52 @@ public class SpringState implements GameState {
 		public void processKey(KeyEvent e){
 			int keyCode = e.getKeyCode();
 			if(keyCode == KeyEvent.VK_SPACE){
-				summer();
+        //change season
+			}
+
+      if(key == KeyEvent.VK_UP){
+          tempObject.setVely(-5); keyDown[0] = true;
+      }
+
+      if(key == KeyEvent.VK_DOWN) {
+          tempObject.setVely(5); keyDown[1] = true;
+      }
+
+      if(key == KeyEvent.VK_LEFT) {
+          tempObject.setVelX(-5); keyDown[2] = true;
+      }
+
+      if(key == KeyEvent.VK_RIGHT) {
+          tempObject.setVelX(5); keyDown[3] = true;
+      }
+
+
+		}
+		public void keyReleased(KeyEvent e){
+			 int key = e.getKeyCode();
+			 if(key == KeyEvent.VK_UP){ keyDown[0] = false;}
+			if(key == KeyEvent.VK_DOWN) {keyDown[1] = false;}
+			if(key == KeyEvent.VK_LEFT) {keyDown[2] = false;}
+			if(key == KeyEvent.VK_RIGHT) {keyDown[3] = false;}
+
+			//vertical movement
+			if(!keyDown[0] && !keyDown[1]){
+					tempObject.setVely(0);
+			}
+			if(!keyDown[2] && !keyDown[3]){
+					tempObject.setVelX(0);
 			}
 		}
-		public void keyReleased(KeyEvent e){}
 
 
     public void clickMouse(MouseEvent e) {}
     public void menu(){}
-		public void help(){}
-    public void load(){}
-    public void winter(){}
-    public void spring(){}
-    public void summer(){c.setState(c.getSummerState());}
-    public void autumn(){}
+    public void help(){}
+		public void load(){}
+    public void running(){}
     public void lose(){}
     public void win(){}
     public void end(){}
     public void setContext(GameContext cont){ this.c = cont;}
-		public void setHandler(Handler h){this.handler=h;}
-
 }
+*/

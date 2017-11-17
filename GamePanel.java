@@ -18,6 +18,8 @@ public class GamePanel extends JPanel implements Runnable {
 	public GamePanel(){
 		setBackground(Color.black);
 		setPreferredSize(new Dimension(PWIDTH,PHEIGHT));
+		/*setMaximumSize( new Dimension(width, height));
+		setMinimumSize( new Dimension(width, height));*/
 		setFocusable(true);
 		requestFocus();
 		readyForTermination();
@@ -116,6 +118,12 @@ public class GamePanel extends JPanel implements Runnable {
 					end = true;
 				}
 			}
+
+			public void keyReleased(KeyEvent e){
+				int keyCode = e.getKeyCode();
+				game.keyReleased(e);
+			}
+
 		});
 	}
 
@@ -138,6 +146,7 @@ public class GamePanel extends JPanel implements Runnable {
 	 JFrame app = new JFrame("Season Jumper");
      app.getContentPane().add(new GamePanel(), BorderLayout.CENTER);
      app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 app.setLocationRelativeTo(null);
      app.pack();
      app.setResizable(false);
      app.setVisible(true);

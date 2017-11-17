@@ -36,6 +36,7 @@ public class WinterState implements GameState {
 	private Color color;
 	private Font font;
 	GameContext c;
+	Handler handler;
 
 	  public WinterState(){
 
@@ -62,6 +63,7 @@ public class WinterState implements GameState {
 				spring();
 			}
 		}
+		public void keyReleased(KeyEvent e){}
 
 
     public void clickMouse(MouseEvent e) {}
@@ -76,4 +78,6 @@ public class WinterState implements GameState {
     public void win(){}
     public void end(){}
     public void setContext(GameContext cont){ this.c = cont;}
+		public void setHandler(Handler h){this.handler=h;}
+
 }

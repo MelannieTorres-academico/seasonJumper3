@@ -2,7 +2,7 @@
  *
  * @author olerma
  */
-public class Camera {
+/*public class Camera {
     private float x, y;
 
     public Camera(float x, float y){
@@ -20,3 +20,4 @@ public class Camera {
     public void setX(float x){ this.x = x;}
     public void setY(float y){ this.y = y;}
 }
+*/

@@ -65,6 +65,8 @@ public class HelpState implements GameState {
 		}
 
 		  public void processKey(KeyEvent e){}
+			public void keyReleased(KeyEvent e){}
+
 		  public void clickMouse(MouseEvent e) {
 				int mx = e.getX();
 				int my = e.getY();
@@ -83,6 +85,8 @@ public class HelpState implements GameState {
       public void win(){}
       public void end(){}
       public void setContext(GameContext cont){ this.c = cont;}
+			public void setHandler(Handler h){}
+
 
 			private boolean mouseOver(int mx, int my,int x, int y, int width, int heigth){
 				if (mx > x && mx < x + width){

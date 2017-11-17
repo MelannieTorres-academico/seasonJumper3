@@ -46,6 +46,8 @@ public class Factory{
       return null;
     }
 
-
+    public Handler createHandler(){
+      return new Handler();
+    }
 
 }

@@ -36,6 +36,8 @@ public class SummerState implements GameState {
 	private Color color;
 	private Font font;
 	GameContext c;
+	Handler handler;
+
 
 	  public SummerState(){
 
@@ -62,8 +64,7 @@ public class SummerState implements GameState {
 				autumn();
 			}
 		}
-
-
+		public void keyReleased(KeyEvent e){}
     public void clickMouse(MouseEvent e) {}
     public void menu(){}
 		public void help(){}
@@ -76,4 +77,6 @@ public class SummerState implements GameState {
     public void win(){}
     public void end(){}
     public void setContext(GameContext cont){ this.c = cont;}
+		public void setHandler(Handler h){this.handler=h;}
+
 }

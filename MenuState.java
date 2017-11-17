@@ -65,6 +65,7 @@ public class MenuState implements GameState {
 
 
   public void processKey(KeyEvent e){}
+	public void keyReleased(KeyEvent e){}
 
   public void clickMouse(MouseEvent e) {
 		int mx = e.getX();
@@ -80,14 +81,15 @@ public class MenuState implements GameState {
   public void menu(){}
 	public void help(){ c.setState(c.getHelpState()); }
   public void load(){	c.setState(c.getLoadState());}
-  public void winter(){}
-  public void spring(){}
-  public void summer(){}
-  public void autumn(){}
+	public void winter(){}
+	public void spring(){}
+	public void summer(){}
+	public void autumn(){}
   public void lose(){}
   public void win(){}
   public void end(){}
   public void setContext(GameContext cont){ this.c = cont;}
+	public void setHandler(Handler h){}
 
 	private boolean mouseOver(int mx, int my,int x, int y, int width, int heigth){
 		if (mx > x && mx < x + width){
