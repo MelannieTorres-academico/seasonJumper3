@@ -55,6 +55,7 @@ public class GameContext {
     lose 					= Factory.getInstance().createState("lose");
     win 					= Factory.getInstance().createState("win");
 		end 					= Factory.getInstance().createState("end");
+		running			= Factory.getInstance().createState("end");
 
 
 		menu.setContext(this);

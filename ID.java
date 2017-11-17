@@ -11,5 +11,9 @@ public enum ID {
     Fuegito(),
     Hielito(),
     Espinita(),
-    Hierbita();
+    Hierbita(),
+    Spring(),
+    Autumn(),
+    Spring(),
+    Winter();
 }
