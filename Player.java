@@ -65,7 +65,7 @@ public class Player  extends GameObject{
     private void collision(){
         for(int i =0 ; i <handler.object.size(); i++){
             GameObject tempObject = handler.object.get(i);
-
+            
             if(tempObject.getID() == ID.Fuegito || tempObject.getID() == ID.Hielito || tempObject.getID() == ID.Espinita || tempObject.getID() == ID.Hierbita){
                 //collision with Basic Enemy
                 if(getBounds().intersects(tempObject.getBounds())){
@@ -77,9 +77,9 @@ public class Player  extends GameObject{
                 if(getBounds().intersects(tempObject.getBounds())){
                     HUD.level++;
                 }
-
+                
             }
-
+             
              if(tempObject.getID() == ID.Enemy){
                 //collision with Basic Enemy
                  if(getBounds().intersects(tempObject.getBounds())){
@@ -87,7 +87,7 @@ public class Player  extends GameObject{
                         y += velY * -1;
                     }
             }
-
+             
         }
     }
 
@@ -99,7 +99,7 @@ public class Player  extends GameObject{
 
     public void setVelX(int velX){ this.velX = velX; }
     public void setVelY(int velY){ this.velY = velY; }
-    public int getVelX(){return velX; }
-    public int getVelY(){ return velY; }
+    public int getVelX(){return velX;}
+    public int getVelY(){ return velY;}
 
 }

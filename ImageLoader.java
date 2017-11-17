@@ -17,11 +17,16 @@ public class ImageLoader {
 	private BufferedImage treeWinter;
 	private BufferedImage treeAutumn;
 	private BufferedImage treeSpring;
-	public static ImageLoader imgL;
-	public static ImageLoader level1Spring;
-	public static ImageLoader level1Winter;
-	public static ImageLoader level1Summer;
-	public static ImageLoader level1Autumn;
+	private BufferedImage level1Spring;
+	private BufferedImage level1Winter;
+	private BufferedImage level1Summer;
+	private BufferedImage level1Autumn;
+	private BufferedImage playerAutumnBack;
+	private BufferedImage playerAutumnFront;
+	private BufferedImage playerAutumnLeft;
+	private BufferedImage playerAutumnRight;
+	private BufferedImage level1;
+	private static ImageLoader imgL;
 
   private final static String IMAGE_DIR = "img/";
 
@@ -30,6 +35,7 @@ public class ImageLoader {
 
 
 		try {
+			level1 = ImageIO.read(new File(IMAGE_DIR+"level1.png"));
 			autumn = ImageIO.read(new File(IMAGE_DIR+"autumn.png"));
 			spring = ImageIO.read(new File(IMAGE_DIR+"spring.png"));
       		summer = ImageIO.read(new File(IMAGE_DIR+"summer.png"));
@@ -46,6 +52,11 @@ public class ImageLoader {
 			level1Winter = ImageIO.read(new File(IMAGE_DIR+"level1Winter.png"));
 			level1Spring = ImageIO.read(new File(IMAGE_DIR+"level1Spring.png"));
 			level1Autumn = ImageIO.read(new File(IMAGE_DIR+"level1Autumn.png"));
+			playerAutumnBack = ImageIO.read(new File(IMAGE_DIR+"playerAutumnBack.png"));
+			playerAutumnFront = ImageIO.read(new File(IMAGE_DIR+"playerAutumnFront.png"));
+			playerAutumnLeft = ImageIO.read(new File(IMAGE_DIR+"playerAutumnLeft.png"));
+			playerAutumnRight = ImageIO.read(new File(IMAGE_DIR+"playerAutumnRight.png"));
+
 		}
     catch(IOException e){}
 	}
@@ -58,13 +69,14 @@ public class ImageLoader {
 	}
 
 	public BufferedImage getImage(String image_name) {
+	if(image_name.equalsIgnoreCase("level1")){ return level1; }
     if(image_name.equalsIgnoreCase("autumn")){ return autumn; }
     if(image_name.equalsIgnoreCase("spring")){ return spring; }
     if(image_name.equalsIgnoreCase("winter")){ return winter; }
     if(image_name.equalsIgnoreCase("summer")){ return summer; }
     if(image_name.equalsIgnoreCase("espinita")){ return espinita; }
     if(image_name.equalsIgnoreCase("hierbita")){ return hierbita; }
-    if(image_name.equalsIgnoreCase("fuegito")){ return fuegito; }
+    if(image_name.equalsIgnoreCase("fueguito")){ return fuegito; }
 	if(image_name.equalsIgnoreCase("hielito")){ return hielito; }
 	if(image_name.equalsIgnoreCase("treeSummer")){ return treeSummer; }
 	if(image_name.equalsIgnoreCase("treeSpring")){ return treeSpring; }

@@ -29,6 +29,7 @@ import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.*;
 import java.awt.Font;
+import java.awt.image.*;
 
 public class AutumnState implements GameState {
 	private Scanner scan = new Scanner(System.in); // for user input
@@ -57,10 +58,11 @@ public class AutumnState implements GameState {
 			g.setColor(color);
 			g.drawImage(ImageLoader.getImageLoader().getImage("autumn"),0,0,null);
 			g.drawString("Autumn",15,40);
+			loadLevel(ImageLoader.getImageLoader().getImage("level1"));
 
- 			handler.addObject(new Player(100, 100, ID.Player, handler));
 			handler.tick();
 			handler.render(g);
+			
 
 		}
 
@@ -90,7 +92,7 @@ public class AutumnState implements GameState {
 		}
 		public void keyReleased(KeyEvent e){
 			 int key = e.getKeyCode();
-			 if(key == KeyEvent.VK_UP){ keyDown[0] = false;}
+			if(key == KeyEvent.VK_UP){ keyDown[0] = false;}
 			if(key == KeyEvent.VK_DOWN) {keyDown[1] = false;}
 			if(key == KeyEvent.VK_LEFT) {keyDown[2] = false;}
 			if(key == KeyEvent.VK_RIGHT) {keyDown[3] = false;}
@@ -103,6 +105,36 @@ public class AutumnState implements GameState {
 				//	tempObject.setVelX(0);
 			}
 		}
+		
+	public void loadLevel(BufferedImage image){
+        int w = image.getWidth();
+        int h = image.getHeight();
+        for(int xx = 0; xx < w; xx++){
+            for(int yy = 0; yy < h; yy++){
+                int pixel = image.getRGB(xx, yy);
+                int red = (pixel >> 16) & 0xff;
+                int green = (pixel >> 8) & 0xff;
+                int blue = (pixel) & 0xff;
+                
+                if(green == 255 && red == 255 && blue == 255){ //white
+                    //handler.addObject(new Enemy(xx*32, yy*32, ID.Hielito));
+                }else if(red == 255 && blue == 255){ //purple
+                    handler.addObject(new Enemy(xx*32, yy*32, ID.Espinita));
+                }else if(green == 255 && blue == 255){ //cyan
+                    //handler.addObject(new Enemy(xx*32, yy*32, ID.Hierbita));
+                }else if(green == 255 && red == 255){ //yellow
+                    //handler.addObject(new BasicMeta(xx*32, yy*32, ID.BasicMeta));
+                }else if(green == 255){ //green
+                    //handler.addObject(new Enemy(xx*32, yy*32, ID.Fuegito));
+                }else if(red == 255){ //red
+                    handler.addObject(new Enemy(xx*32, yy*32, ID.Enemy));
+                }else if(blue == 255){ //blue
+                    //handler.addObject(new Player(xx*32, yy*32, ID.Player, handler));
+                }
+                
+            }
+        }
+    }
 
 
     public void clickMouse(MouseEvent e) {}
