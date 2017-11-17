@@ -31,6 +31,7 @@ import java.util.*;
 
 public class EndState implements GameState {
 		GameContext c;
+		Handler handler;
 		private int i;
 		private Color color;
 
@@ -51,16 +52,19 @@ public class EndState implements GameState {
 		}
 
     public void processKey(KeyEvent e){}
+		public void keyReleased(KeyEvent e){}
     public void clickMouse(MouseEvent e) {}
     public void menu(){}
 		public void help(){}
     public void load(){}
-    public void winter(){}
-    public void spring(){}
-    public void summer(){}
-    public void autumn(){}
+		public void winter(){}
+		public void spring(){}
+		public void summer(){}
+		public void autumn(){}
     public void lose(){}
     public void win(){}
     public void end(){}
     public void setContext(GameContext cont){ this.c = cont;}
+		public void setHandler(Handler h){}
+
 }

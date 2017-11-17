@@ -56,6 +56,7 @@ public class LoseState implements GameState {
 		}
 
 		  public void processKey(KeyEvent e){}
+      public void keyReleased(KeyEvent e){}
 		  public void clickMouse(MouseEvent e) {}
       public void menu(){}
       public void help(){}
@@ -68,6 +69,8 @@ public class LoseState implements GameState {
       public void win(){}
       public void end(){c.setState(c.getEndState());}
       public void setContext(GameContext cont){ this.c = cont;}
+      public void setHandler(Handler h){}
+
 
 
 }
