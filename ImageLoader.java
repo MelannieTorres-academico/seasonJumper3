@@ -13,24 +13,29 @@ public class ImageLoader {
   private BufferedImage hierbita;
   private BufferedImage fuegito;
 	private BufferedImage hielito;
+	private BufferedImage margarite;
 	private BufferedImage tree;
 	public static ImageLoader imgL;
   private final static String IMAGE_DIR = "img/";
 
-
 	public ImageLoader() {
 
-
 		try {
+
 			autumn = ImageIO.read(new File(IMAGE_DIR+"autumn.png"));
 			spring = ImageIO.read(new File(IMAGE_DIR+"spring.png"));
       summer = ImageIO.read(new File(IMAGE_DIR+"summer.png"));
       winter = ImageIO.read(new File(IMAGE_DIR+"winter.png"));
+
       espinita = ImageIO.read(new File(IMAGE_DIR+"espinita.png"));
       hierbita = ImageIO.read(new File(IMAGE_DIR+"hierbita.png"));
-      fuegito = ImageIO.read(new File(IMAGE_DIR+"fuegito.png"));
+
+      fuegito = ImageIO.read(new File(IMAGE_DIR+"fueguito.png"));
 			hielito = ImageIO.read(new File(IMAGE_DIR+"hielito.png"));
+			margarite= ImageIO.read(new File(IMAGE_DIR+"margarite.png"));
+
 			tree = ImageIO.read(new File(IMAGE_DIR+"tree.png"));
+
 		}
     catch(IOException e){}
 	}
@@ -52,6 +57,7 @@ public class ImageLoader {
     if(image_name.equalsIgnoreCase("fuegito")){ return fuegito; }
 		if(image_name.equalsIgnoreCase("hielito")){ return hielito; }
 		if(image_name.equalsIgnoreCase("tree")){ return tree; }
+		if(image_name.equalsIgnoreCase("margarite")){ return margarite; }
     return null;
 	}
 

@@ -42,6 +42,8 @@ public class GameContext {
 	GameState end;
 	GameState currentState;
 	Handler 	handler;
+	Player		player;
+
 
 
 	public GameContext(){
@@ -57,6 +59,7 @@ public class GameContext {
     win 					= Factory.getInstance().createState("win");
 		end 					= Factory.getInstance().createState("end");
 		handler				= Factory.getInstance().createHandler();
+
 
 		menu.setContext(this);
 		help.setContext(this);
@@ -74,7 +77,15 @@ public class GameContext {
 		summer.setHandler(handler);
 		autumn.setHandler(handler);
 
+		player 				= new Player(200, 200, ID.Player, handler);
+
+		winter.setPlayer(player);
+		spring.setPlayer(player);
+		summer.setPlayer(player);
+		autumn.setPlayer(player);
+
 		currentState  = menu;
+
 	}
 
 	public GameState getMenuState(){return menu;}
@@ -91,11 +102,13 @@ public class GameContext {
 	public void setState(GameState s){ this.currentState = s; }
 	public void setContext(GameContext cont){}//this.context = cont;}
 	public void setHandler(Handler h){}//this.context = cont;}
+	public void setPlayer(Player p){}//this.context = cont;}
+
+
 	public void processKey(KeyEvent e){	currentState.processKey(e);	}
 	public void keyReleased(KeyEvent e){currentState.keyReleased(e);}
 	public void clickMouse(MouseEvent e) {	currentState.clickMouse(e); }
 	public void draw(Graphics g){	currentState.draw(g);}
-
 
 	public void menu(){currentState.menu(); }
 	public void help(){currentState.help(); }
@@ -107,4 +120,6 @@ public class GameContext {
   public void lose(){currentState.lose(); }
   public void win(){currentState.win(); }
   public void end(){currentState.end(); }
+
+	public void tick(Camera camera){currentState.tick(camera);}
 }

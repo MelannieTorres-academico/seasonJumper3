@@ -36,6 +36,9 @@ public class AutumnState implements GameState {
 	private Font font;
 	GameContext c;
 	Handler handler;
+	Player player;
+	int i;
+
 	private boolean[] keyDown=new boolean[4];
 
 	  public AutumnState(){
@@ -51,14 +54,16 @@ public class AutumnState implements GameState {
 		}
 
 		public void draw(Graphics g){
+			i++;
 			color=new Color(53, 171, 255);
 			font=new Font("Verdana", Font.BOLD, 18);
 			g.setFont(font);
 			g.setColor(color);
 			g.drawImage(ImageLoader.getImageLoader().getImage("autumn"),0,0,null);
-			g.drawString("Autumn",15,40);
+			//g.drawString("Autumn",15,40);
 
- 			handler.addObject(new Player(100, 100, ID.Player, handler));
+
+ 			handler.addObject(player);
 			handler.tick();
 			handler.render(g);
 
@@ -70,38 +75,14 @@ public class AutumnState implements GameState {
 				winter();
 			}
 
-      if(keyCode == KeyEvent.VK_UP){
-      //    tempObject.setVely(-5); keyDown[0] = true;
-      }
-
-      if(keyCode == KeyEvent.VK_DOWN) {
-      //    tempObject.setVely(5); keyDown[1] = true;
-      }
-
-      if(keyCode == KeyEvent.VK_LEFT) {
-      //    tempObject.setVelX(-5); keyDown[2] = true;
-      }
-
-      if(keyCode == KeyEvent.VK_RIGHT) {
-      //    tempObject.setVelX(5); keyDown[3] = true;
-      }
-
+      if(keyCode == KeyEvent.VK_UP   ) { player.moveY(-10);}
+      if(keyCode == KeyEvent.VK_DOWN ) { player.moveY(10); }
+      if(keyCode == KeyEvent.VK_LEFT ) { player.moveX(-10); }
+      if(keyCode == KeyEvent.VK_RIGHT) { player.moveX(10); }
 
 		}
 		public void keyReleased(KeyEvent e){
-			 int key = e.getKeyCode();
-			 if(key == KeyEvent.VK_UP){ keyDown[0] = false;}
-			if(key == KeyEvent.VK_DOWN) {keyDown[1] = false;}
-			if(key == KeyEvent.VK_LEFT) {keyDown[2] = false;}
-			if(key == KeyEvent.VK_RIGHT) {keyDown[3] = false;}
-
-			//vertical movement
-			if(!keyDown[0] && !keyDown[1]){
-					//tempObject.setVely(0);
-			}
-			if(!keyDown[2] && !keyDown[3]){
-				//	tempObject.setVelX(0);
-			}
+			int key = e.getKeyCode();
 		}
 
 
@@ -118,5 +99,10 @@ public class AutumnState implements GameState {
     public void end(){}
     public void setContext(GameContext cont){ this.c = cont;}
 		public void setHandler(Handler h){this.handler=h;}
+		public void setPlayer(Player p){this.player=p;}
+
+
+		public void tick(Camera camera){camera.tick(player);}
+
 
 }
