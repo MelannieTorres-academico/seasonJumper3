@@ -60,7 +60,6 @@ public class GameContext {
 		end 					= Factory.getInstance().createState("end");
 		handler				= Factory.getInstance().createHandler();
 
-
 		menu.setContext(this);
 		help.setContext(this);
 		load.setContext(this);
@@ -72,10 +71,7 @@ public class GameContext {
     win.setContext(this);
 		end.setContext(this);
 
-		// winter.setHandler(handler);
-		// spring.setHandler(handler);
-		// summer.setHandler(handler);
-		// autumn.setHandler(handler);
+
 
 		player = new Player(150, 150, ID.Player);
 
@@ -100,8 +96,7 @@ public class GameContext {
   public GameState getEndState(){return end;}
 
 	public void setState(GameState s){ this.currentState = s; }
-	public void setContext(GameContext cont){}//this.context = cont;}
-	//public void setHandler(Handler h){}//this.context = cont;}
+	public void setContext(GameContext cont){}
 	public void setPlayer(Player p){}//this.context = cont;}
 
 
