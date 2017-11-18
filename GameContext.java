@@ -73,7 +73,7 @@ public class GameContext {
 
 
 
-		player = new Player(150, 150, ID.Player);
+		player = new Player(608, 1219, ID.Player);
 
 		winter.setPlayer(player);
 		spring.setPlayer(player);

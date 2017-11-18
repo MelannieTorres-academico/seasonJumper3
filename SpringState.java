@@ -95,7 +95,7 @@ public class SpringState implements GameState {
 			//font=new Font("Verdana", Font.BOLD, 18);
 			//g.setFont(font);
 			//g.setColor(color);
-			g.drawImage(ImageLoader.getImageLoader().getImage("spring"),0,0,null);
+			g.drawImage(ImageLoader.getImageLoader().getImage("spring"),500,750,null); 
 			//g.drawString("Spring",15,40);
 			collision();
 			player.render(g);

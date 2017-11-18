@@ -32,7 +32,7 @@ import java.util.*;
 
 public class WinState implements GameState {
     private int i=0;
-¡	  GameContext c;
+	  GameContext c;
     private Color color;
     private Font font;
     Player player;

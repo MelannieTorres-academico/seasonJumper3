@@ -70,6 +70,8 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 */
 	//Taked from somebody esle, notch code, DONT touch
+
+
 public  void run(){
 	 this.requestFocus();
 		long lastTime = System.nanoTime();

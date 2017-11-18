@@ -51,11 +51,14 @@ public class AutumnState implements GameState {
 
 	  	public AutumnState(){
 	  		loadLevel(ImageLoader.getImageLoader().getImage("level1"));
+	  		//GamePanel.setBackground(new Color(255,248,220));
 	  	}
 
 		public AutumnState(GameContext c){
 			this.c = c;
-			loadLevel(ImageLoader.getImageLoader().getImage("level1"));}
+			loadLevel(ImageLoader.getImageLoader().getImage("level1"));
+			//GamePanel.setBackground(new Color(255,248,220));
+		}
 
 		public void loadLevel(BufferedImage image){
         int w = image.getWidth();
@@ -126,7 +129,9 @@ public class AutumnState implements GameState {
 			//font=new Font("Verdana", Font.BOLD, 18);
 			//g.setFont(font);
 			//g.setColor(color);
-			g.drawImage(ImageLoader.getImageLoader().getImage("autumn"),0,0,null);
+			//g.setColor(new Color(255,248,220));
+	  		//g.fillRect(0,0,GamePanel.PWIDTH,GamePanel.PHEIGHT);
+			g.drawImage(ImageLoader.getImageLoader().getImage("autumn"),500,750,null); 
 			player.render(g);
 			player.tick();
         	for(int i = 0; i  < enemy.size(); i++){

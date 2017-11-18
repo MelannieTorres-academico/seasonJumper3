@@ -97,7 +97,7 @@ public class WinterState implements GameState {
 			//font=new Font("Verdana", Font.BOLD, 18);
 			//g.setFont(font);
 			//g.setColor(color);
-			g.drawImage(ImageLoader.getImageLoader().getImage("winter"),0,0,null);
+			g.drawImage(ImageLoader.getImageLoader().getImage("winter"),500,750,null);
 			//g.drawString("Winter",15,40);
 			player.render(g);
 

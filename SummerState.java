@@ -94,7 +94,7 @@ public class SummerState implements GameState {
 			//g.setFont(font);
 			//g.setColor(color);
 			collision();
-			g.drawImage(ImageLoader.getImageLoader().getImage("summer"),0,0,null);
+			g.drawImage(ImageLoader.getImageLoader().getImage("summer"),500,750,null);
 			//g.drawString("Summer",15,40);
 			player.render(g);
 						player.tick();
