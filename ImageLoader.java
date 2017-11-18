@@ -31,9 +31,13 @@ public class ImageLoader {
 	private BufferedImage margarite;
 
 	private BufferedImage tree;
+	private BufferedImage goal;
+
 	private BufferedImage volumeOn;
 	private BufferedImage volumeOff;
-	private BufferedImage goal;
+
+	private BufferedImage fireworks;
+
 	public static ImageLoader imgL;
 
   private final static String IMAGE_DIR = "img/";
@@ -66,6 +70,7 @@ public class ImageLoader {
 			volumeOff = ImageIO.read(new File(IMAGE_DIR+"volumeOff.png"));
 
 			goal = ImageIO.read(new File(IMAGE_DIR+"meta.png"));
+			fireworks = ImageIO.read(new File(IMAGE_DIR+"fireworks.png"));
 
 		}
     catch(IOException e){}
@@ -97,6 +102,7 @@ public class ImageLoader {
 	if(image_name.equalsIgnoreCase("volumeon")){ return volumeOn; }
 	if(image_name.equalsIgnoreCase("volumeoff")){ return volumeOff; }
 	if(image_name.equalsIgnoreCase("goal")){ return goal; }
+	if(image_name.equalsIgnoreCase("fireworks")){ return fireworks; }
 
     return null;
 	}

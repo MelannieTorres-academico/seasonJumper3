@@ -32,7 +32,7 @@ import java.util.*;
 
 public class WinState implements GameState {
     private int i=0;
-¡	  GameContext c;
+	  GameContext c;
     private Color color;
     private Font font;
     Player player;
@@ -45,14 +45,14 @@ public class WinState implements GameState {
 
   		public void draw(Graphics g){
   			i++;
-        color=new Color(122, 24, 232);
-        font=new Font("Verdana", Font.BOLD, 18);
-        g.setColor(color);
+        font=new Font("arial", 1, 30);
+        g.setColor(color.white);
         g.setFont(font);
         //g.drawImage(ImageLoader.getImageLoader().getBackground(),0,0,null);
-        //g.drawImage(ImageLoader.getImageLoader().getFireworks(),0,0,null);
-  		  g.drawString("Ganaste",300, 20);
-  			if (i>200){
+
+        g.drawString("You win!", 270, 190);
+        g.drawString("Score: "+player.getScore(),230, 290);
+  			if (i>600){
   				end();
   			}
   		}
@@ -73,4 +73,6 @@ public class WinState implements GameState {
       public void setContext(GameContext cont){ this.c = cont;}
       public void setPlayer(Player p){this.player=p;}
       public void tick(Camera camera){}
+        public void setX(Camera camera){camera.setX(0);}
+        public void setY(Camera camera){camera.setY(0);}
 }

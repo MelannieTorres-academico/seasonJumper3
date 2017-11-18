@@ -46,14 +46,14 @@ public class LoseState implements GameState {
 
 		public void draw(Graphics g){
       i++;
-      font=new Font("Verdana", Font.BOLD, 20);
-      color=new Color(122, 24, 232);
-      g.setColor(color);
+      font=new Font("arial", 1, 30);
+      g.setColor(color.white);
       g.setFont(font);
-      //g.drawImage(ImageLoader.getImageLoader().getBackground(),0,0,null);
 
-
-			if (i<200)    { g.drawString("You lose",200, 200); }
+			if (i<600)    {
+        g.drawString("You lose ", 270, 190);
+        g.drawString("Score: "+player.getScore(),230, 290);
+       }
 			else{ end(); }
 		}
 
@@ -73,4 +73,6 @@ public class LoseState implements GameState {
       public void setContext(GameContext cont){ this.c = cont;}
       public void setPlayer(Player p){this.player=p;}
       public void tick(Camera camera){}
+      public void setX(Camera camera){camera.setX(0);}
+      public void setY(Camera camera){camera.setY(0);}
 }

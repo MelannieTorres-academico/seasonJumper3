@@ -24,7 +24,7 @@ public class HUD {
       score=s;
     }
     public int getScore(){
-      return score/200;
+      return score/50;
     }
     public void modifyScore(int ds){
       score+=ds;

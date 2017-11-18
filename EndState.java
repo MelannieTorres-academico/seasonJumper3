@@ -28,32 +28,44 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.*;
 import java.util.*;
+import java.awt.Font;
+
 
 public class EndState implements GameState {
 		GameContext c;
 		private int i;
 		private Color color;
+		Font font;
+		Player player;
 
 		public EndState(){}
 
 		public EndState(GameContext c){
 			this.c = c;
+			font =new Font("arial", 1, 30);
+
 		}
 
 		public void draw(Graphics g){
-			color=new Color(122, 24, 232);
-			g.setColor(color);
-			//g.drawImage(ImageLoader.getImageLoader().getBackground(),0,0,null);
-		  g.drawString("Game over",200, 200);
-			if(i>200){
-				c.setState(this);
-			}
+			g.setColor(Color.white);
+			g.setFont(font);
+			g.drawString("Quit", 270, 190);
+			g.drawString("Score: "+player.getScore(),230, 290);
+			g.drawRect(210, 150, 200, 64);
+
 		}
 
     public void processKey(KeyEvent e){}
 		public void keyReleased(KeyEvent e){}
-    public void clickMouse(MouseEvent e) {}
-    public void menu(){}
+
+    public void clickMouse(MouseEvent e) {
+			int mx = e.getX();
+			int my = e.getY();
+			System.out.println("x: "+mx+" y: "+my);
+
+			if (mouseOver(mx, my, 210, 150, 200, 64)){ System.exit(0); }
+		}
+    public void menu(){c.setState(c.getMenuState());}
 		public void help(){}
     public void load(){}
 		public void winter(){}
@@ -64,6 +76,13 @@ public class EndState implements GameState {
     public void win(){}
     public void end(){}
     public void setContext(GameContext cont){ this.c = cont;}
-		public void setPlayer(Player p){}
+		public void setPlayer(Player p){this.player=p;}
 		public void tick(Camera camera){}
+		public void setX(Camera camera){}
+		public void setY(Camera camera){}
+
+		private boolean mouseOver(int mx, int my,int x, int y, int width, int heigth){
+			if (mx > x && mx < x + width){	return (my >  y  && my < y + heigth);}
+			else{return false;}
+		}
 }
