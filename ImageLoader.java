@@ -33,8 +33,11 @@ public class ImageLoader {
 	private BufferedImage level1;
 
 	private BufferedImage margarite;
-	
-	private static ImageLoader imgL;
+
+	private BufferedImage tree;
+	private BufferedImage volumeOn;
+	private BufferedImage volumeOff;
+	public static ImageLoader imgL;
 
   private final static String IMAGE_DIR = "img/";
 
@@ -63,6 +66,9 @@ public class ImageLoader {
 			playerAutumnLeft = ImageIO.read(new File(IMAGE_DIR+"playerAutumnLeft.png"));
 			playerAutumnRight = ImageIO.read(new File(IMAGE_DIR+"playerAutumnRight.png"));
 			margarite = ImageIO.read(new File(IMAGE_DIR+"margarite.png"));
+
+			volumeOn = ImageIO.read(new File(IMAGE_DIR+"volumeOn.png"));
+			volumeOff = ImageIO.read(new File(IMAGE_DIR+"volumeOff.png"));
 
 		}
     catch(IOException e){}
@@ -94,6 +100,10 @@ public class ImageLoader {
 	if(image_name.equalsIgnoreCase("level1Autumn")){ return level1Autumn; }
 	if(image_name.equalsIgnoreCase("level1Spring")){ return level1Spring; }
 	if(image_name.equalsIgnoreCase("margarite")){ return margarite;}
+	if(image_name.equalsIgnoreCase("volumeon")){ return volumeOn; }
+	if(image_name.equalsIgnoreCase("volumeoff")){ return volumeOff; }
+
+
     return null;
 	}
 
