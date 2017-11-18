@@ -52,17 +52,15 @@ public class AutumnState implements GameState {
 		}
 
 		public void draw(Graphics g){
-			color=new Color(53, 171, 255);
-			font=new Font("Verdana", Font.BOLD, 18);
-			g.setFont(font);
-			g.setColor(color);
+			//color=new Color(53, 171, 255);
+			//font=new Font("Verdana", Font.BOLD, 18);
+			//g.setFont(font);
+			//g.setColor(color);
 			g.drawImage(ImageLoader.getImageLoader().getImage("autumn"),0,0,null);
-			g.drawString("Autumn",15,40);
-			loadLevel(ImageLoader.getImageLoader().getImage("level1"));
-
+			//g.drawString("Autumn",15,40);
 			handler.tick();
 			handler.render(g);
-			
+			loadLevel(ImageLoader.getImageLoader().getImage("level1"));
 
 		}
 
@@ -115,23 +113,23 @@ public class AutumnState implements GameState {
                 int red = (pixel >> 16) & 0xff;
                 int green = (pixel >> 8) & 0xff;
                 int blue = (pixel) & 0xff;
-                
+                System.out.println("X:" + xx + "Y: " + yy);
                 if(green == 255 && red == 255 && blue == 255){ //white
-                    //handler.addObject(new Enemy(xx*32, yy*32, ID.Hielito));
+                    handler.addObject(new Enemy(xx*8, yy*8, ID.Hielito));
                 }else if(red == 255 && blue == 255){ //purple
-                    handler.addObject(new Enemy(xx*32, yy*32, ID.Espinita));
+                	handler.addObject(new Enemy(xx*8,yy*8, ID.Espinita));
+                    handler.addObject(new Enemy(xx*8, yy*8, ID.Espinita));
                 }else if(green == 255 && blue == 255){ //cyan
-                    //handler.addObject(new Enemy(xx*32, yy*32, ID.Hierbita));
+                    handler.addObject(new Enemy(xx*8, yy*8, ID.Hierbita));
                 }else if(green == 255 && red == 255){ //yellow
-                    //handler.addObject(new BasicMeta(xx*32, yy*32, ID.BasicMeta));
+                    handler.addObject(new BasicMeta(xx*8, yy*8, ID.BasicMeta));
                 }else if(green == 255){ //green
-                    //handler.addObject(new Enemy(xx*32, yy*32, ID.Fuegito));
+                    handler.addObject(new Enemy(xx*8, yy*8, ID.Fuegito));
                 }else if(red == 255){ //red
-                    handler.addObject(new Enemy(xx*32, yy*32, ID.Enemy));
+                   handler.addObject(new Enemy(xx*8, yy*8, ID.Enemy));
                 }else if(blue == 255){ //blue
-                    //handler.addObject(new Player(xx*32, yy*32, ID.Player, handler));
+                    handler.addObject(new Player(xx*8, yy*8, ID.Player, handler));
                 }
-                
             }
         }
     }
@@ -149,6 +147,6 @@ public class AutumnState implements GameState {
     public void win(){}
     public void end(){}
     public void setContext(GameContext cont){ this.c = cont;}
-		public void setHandler(Handler h){this.handler=h;}
+	public void setHandler(Handler h){this.handler=h;}
 
 }

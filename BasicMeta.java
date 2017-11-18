@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/*package gameexam;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -14,8 +13,6 @@ public class BasicMeta extends GameObject{
 
     public BasicMeta(int x, int y, ID id){
         super(x, y, id);
-
-
     }
 
 
@@ -48,4 +45,4 @@ public class BasicMeta extends GameObject{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-}*/
+}

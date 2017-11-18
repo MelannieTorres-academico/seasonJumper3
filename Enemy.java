@@ -18,10 +18,10 @@ public class Enemy extends GameObject{
 
     public void render(Graphics g) {
        if( id == ID.Enemy){
-         g.drawImage(ImageLoader.getImageLoader().getImage("tree"), (int)x, (int)y, null);
+         g.drawImage(ImageLoader.getImageLoader().getImage("treeSpring"), (int)x, (int)y, null);
        }
        if(id == ID.Fuegito){
-         g.drawImage(ImageLoader.getImageLoader().getImage("fuegito"), (int)x, (int)y, null);
+         g.drawImage(ImageLoader.getImageLoader().getImage("fueguito"), (int)x, (int)y, null);
        }
        if(id == ID.Hielito){
          g.drawImage(ImageLoader.getImageLoader().getImage("hielito"), (int)x, (int)y, null);

@@ -6,8 +6,8 @@ import java.text.DecimalFormat;
 
 public class GamePanel extends JPanel implements Runnable {
 
-	private static final int PWIDTH = 640;
-	private static final int PHEIGHT = PWIDTH/ 12 * 9; //tamaño del panel
+	public static final int PWIDTH = 640;
+	public static final int PHEIGHT = PWIDTH/ 12 * 9; //tamaño del panel
 
 	private Thread animator; //controla la animación
 	private volatile boolean end = false;
@@ -18,8 +18,8 @@ public class GamePanel extends JPanel implements Runnable {
 	public GamePanel(){
 		setBackground(Color.black);
 		setPreferredSize(new Dimension(PWIDTH,PHEIGHT));
-		/*setMaximumSize( new Dimension(width, height));
-		setMinimumSize( new Dimension(width, height));*/
+		setMaximumSize(new Dimension(PWIDTH, PHEIGHT));
+		setMinimumSize(new Dimension(PWIDTH, PHEIGHT));
 		setFocusable(true);
 		requestFocus();
 		readyForTermination();
