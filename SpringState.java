@@ -36,15 +36,9 @@ public class SpringState implements GameState {
 	private Color color;
 	private Font font;
 	GameContext c;
-	Handler handler;
 	Player player;
 
-	private boolean[] keyDown=new boolean[4];
-
-
-	  public SpringState(){
-
-		}
+	  public SpringState(){	}
 
 		public SpringState(GameContext c){
 			this.c = c;
@@ -58,10 +52,9 @@ public class SpringState implements GameState {
 			g.drawImage(ImageLoader.getImageLoader().getImage("spring"),0,0,null);
 			g.drawString("Spring",15,40);
 
+			player.render(g);
 
- 			handler.addObject(player);
-			handler.tick();
-			handler.render(g);
+
 		}
 
 
@@ -77,17 +70,7 @@ public class SpringState implements GameState {
 		      if(keyCode == KeyEvent.VK_RIGHT) { player.moveX(10); }
 
 				}
-				public void keyReleased(KeyEvent e){
-					int key = e.getKeyCode();
-
-					//vertical movement
-					if(!keyDown[0] && !keyDown[1]){
-							//tempObject.setVely(0);
-					}
-					if(!keyDown[2] && !keyDown[3]){
-						//	tempObject.setVelX(0);
-					}
-				}
+				public void keyReleased(KeyEvent e){ int key = e.getKeyCode(); }
 
 
 
@@ -103,7 +86,6 @@ public class SpringState implements GameState {
     public void win(){}
     public void end(){}
     public void setContext(GameContext cont){ this.c = cont;}
-		public void setHandler(Handler h){this.handler=h;}
 		public void setPlayer(Player p){this.player=p;}
 		public void tick(Camera camera){camera.tick(player);}
 }
