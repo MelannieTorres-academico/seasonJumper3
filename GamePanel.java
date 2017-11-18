@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.text.DecimalFormat;
+import java.awt.Font;
+
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -11,12 +13,15 @@ public class GamePanel extends JPanel implements Runnable {
 
 	private Thread animator; //controla la animación
 	private volatile boolean end = false;
+	private volatile boolean pause = false;
 	private String s;
 	private GameContext game;
 	private Camera camera;
+	private Font font;
 
 
 	public GamePanel(){
+		font = new Font("arial", 1, 30);
 		setBackground(Color.black);
 		setPreferredSize(new Dimension(PWIDTH,PHEIGHT));
 		setMaximumSize(new Dimension(PWIDTH, PHEIGHT));
@@ -72,7 +77,7 @@ public  void run(){
 		int frames = 0;
 
 		while(end==false){
-
+			if(pause==false){
 			 long now = System.nanoTime();
 				delta += (now - lastTime) / ns;
 				lastTime = now;
@@ -98,6 +103,7 @@ public  void run(){
 					 System.out.println("FPS: "+ frames);
 						frames = 0;
 				}
+			}
 		}
 	//	stop();
 }
@@ -114,8 +120,6 @@ public  void run(){
         }
       dbg.setColor(Color.black);
       dbg.fillRect(0,0,PWIDTH,PHEIGHT);
-      //game.draw(dbg);
-
 
 }
 
@@ -164,6 +168,15 @@ public  void run(){
 				if ((keyCode == KeyEvent.VK_ESCAPE) || (keyCode == KeyEvent.VK_END) || ((keyCode == KeyEvent.VK_C) && e.isControlDown()) ) {
 					end = true;
 				}
+				if ((keyCode == KeyEvent.VK_P)){
+					if(pause==false){
+						paintScreen(); //paint the pause message
+						pause = true;
+					}else{
+						pause=false;
+					}
+
+				}
 			}
 
 			public void keyReleased(KeyEvent e){
@@ -178,8 +191,16 @@ public  void run(){
 		Graphics g;
 		try{
 			g = this.getGraphics();
-			if((g != null) && (dbImage != null))
+			if((g != null) && (dbImage != null)){
 				g.drawImage(dbImage,0,0,null);
+
+				if(pause){
+					g.setFont(font);
+					g.setColor(Color.red);
+					g.drawString("Paused", PWIDTH/2, PHEIGHT/2);
+					g.setColor(Color.black);
+				}
+			}
 			Toolkit.getDefaultToolkit().sync();
 			g.dispose();
 
@@ -187,6 +208,7 @@ public  void run(){
 		catch(Exception e){
 			System.out.println("Graphics context error: "+e);
 		}
+
 	}
 
 	public static void main(String args[]){

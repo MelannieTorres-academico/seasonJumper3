@@ -42,6 +42,9 @@ public class AutumnState implements GameState {
 	private boolean[] keyDown=new boolean[4];
 	LinkedList<Enemy> enemy = new LinkedList<>();
 	Goal goal;
+	private int dx=1;
+	private int dy=1;
+	private volatile boolean pause = false;
 
 
 
@@ -54,6 +57,14 @@ public class AutumnState implements GameState {
 		public AutumnState(GameContext c){
 			this.c = c;
 			loadLevel(ImageLoader.getImageLoader().getImage("level1"));
+
+
+	  public AutumnState(){
+		}
+
+		public AutumnState(GameContext c){
+			this.c = c;
+
 		}
 
 		public void loadLevel(BufferedImage image){
@@ -105,29 +116,14 @@ public class AutumnState implements GameState {
 
 public void processKey(KeyEvent e){
 			int key = e.getKeyCode();
-			if(key == KeyEvent.VK_SPACE){
-				winter();
-			}
-
-                if(key == KeyEvent.VK_UP){
-                    player.setVely(-1); keyDown[0] = true;
-                }
-                
-                if(key == KeyEvent.VK_DOWN) {
-                    player.setVely(1); keyDown[1] = true;
-                }
-                
-                if(key == KeyEvent.VK_LEFT) {
-                    player.setVelX(-1); keyDown[2] = true;
-                }
-                
-                if(key == KeyEvent.VK_RIGHT) {
-                    player.setVelX(1); keyDown[3] = true;
-                }
-
-
-
-
+			if(pause==false){
+			if(key == KeyEvent.VK_SPACE){winter();}
+            if(key == KeyEvent.VK_UP){player.setVely(-1); keyDown[0] = true;}
+            if(key == KeyEvent.VK_DOWN) {player.setVely(1); keyDown[1] = true;}
+            if(key == KeyEvent.VK_LEFT) {player.setVelX(-1); keyDown[2] = true;}
+            if(key == KeyEvent.VK_RIGHT) {player.setVelX(1); keyDown[3] = true;}
+        	}
+        	
 		}
 
 		public void keyReleased(KeyEvent e){
@@ -147,6 +143,22 @@ public void processKey(KeyEvent e){
 
 		}
 
+		}
+
+		public void processKey(KeyEvent e){
+			int keyCode = e.getKeyCode();
+
+				if(keyCode == KeyEvent.VK_SPACE){winter();}
+	      if(keyCode == KeyEvent.VK_UP   ) { player.moveY(-dy);}
+	      if(keyCode == KeyEvent.VK_DOWN ) { player.moveY(dy); }
+	      if(keyCode == KeyEvent.VK_LEFT ) { player.moveX(-dx); }
+	      if(keyCode == KeyEvent.VK_RIGHT) { player.moveX(dx); }
+			}
+			if(keyCode == KeyEvent.VK_P) { if(pause==false){pause=true;}else{pause=false;} }
+		}
+
+		public void keyReleased(KeyEvent e){	int key = e.getKeyCode(); }
+>>>>>>> develop
     public void clickMouse(MouseEvent e) {}
     public void menu(){}
     public void help(){}

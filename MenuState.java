@@ -36,17 +36,19 @@ public class MenuState implements GameState {
 	Font font2;
 	Color color;
 
-	public MenuState(){}
+	public MenuState(){
+		font =new Font("arial", 1, 50);
+		font2 =new Font("arial", 1, 30);
+	}
 
 	public MenuState(GameContext c){
 		this.c = c;
+		font =new Font("arial", 1, 50);
+		font2 =new Font("arial", 1, 30);
 	}
 
 	public void draw(Graphics g){
 		g.setColor(Color.white);
-		font =new Font("arial", 1, 50);
-		font2 =new Font("arial", 1, 30);
-
 
 		g.setFont(font);
 		g.drawString("Menu", 240, 70);

@@ -40,9 +40,13 @@ public class WinterState implements GameState {
 	Player player;
 	int velX;
 	int velY;
+	private int dx=1;
+	private int dy=1;
 	private boolean[] keyDown=new boolean[4];
 	LinkedList<Enemy> enemy = new LinkedList<>();
 	Goal goal;
+	private volatile boolean pause = false;
+
 
 
 	  public WinterState(){
@@ -106,27 +110,16 @@ public class WinterState implements GameState {
 		}
 
 		public void processKey(KeyEvent e){
+
 			int key = e.getKeyCode();
-			if(key == KeyEvent.VK_SPACE){
-				spring();
-			}
-
-                if(key == KeyEvent.VK_UP){
-                    player.setVely(-1); keyDown[0] = true;
-                }
-                
-                if(key == KeyEvent.VK_DOWN) {
-                    player.setVely(1); keyDown[1] = true;
-                }
-                
-                if(key == KeyEvent.VK_LEFT) {
-                    player.setVelX(-1); keyDown[2] = true;
-                }
-                
-                if(key == KeyEvent.VK_RIGHT) {
-                    player.setVelX(1); keyDown[3] = true;
-                }
-
+			if(pause==false){
+			if(key == KeyEvent.VK_SPACE){spring();}
+            if(key == KeyEvent.VK_UP){player.setVely(-dy); keyDown[0] = true;}
+            if(key == KeyEvent.VK_DOWN) {player.setVely(dy); keyDown[1] = true;} 
+            if(key == KeyEvent.VK_LEFT) {player.setVelX(-dx); keyDown[2] = true;} 
+            if(key == KeyEvent.VK_RIGHT) {player.setVelX(dx); keyDown[3] = true;}
+            }
+            if(keyCode == KeyEvent.VK_P) { if(pause==false){pause=true;}else{pause=false;} 
 
 
 
