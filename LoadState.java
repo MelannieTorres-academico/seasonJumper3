@@ -51,9 +51,9 @@ public class LoadState implements GameState {
       //g.drawImage(ImageLoader.getImageLoader().getBackground(),0,0,null);
 
 
-			if (i<100)    { g.drawString("3",200, 200); }
-			else if(i<200){ g.drawString("2",200, 200); }
-			else if(i<300){ g.drawString("1",200, 200); }
+			if (i<10)    { g.drawString("3",200, 200); }
+			else if(i<20){ g.drawString("2",200, 200); }
+			else if(i<30){ g.drawString("1",200, 200); }
 			else{
         winter();
       }
@@ -74,6 +74,9 @@ public class LoadState implements GameState {
       public void end(){}
       public void setContext(GameContext cont){ this.c = cont;}
       public void setHandler(Handler h){}
+      public void setPlayer(Player p){}
+      public int getVelX(){ return 0;}
+  		public int getVelY(){return 0;}
 
-
+      public void tick(Camera camera){}
 }

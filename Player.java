@@ -24,7 +24,6 @@ public class Player  extends GameObject{
     public Player(int x, int y, ID id, Handler handler){
         super(x, y, id);
         this.handler = handler;
-
     }
 
     public Rectangle getBounds(){
@@ -92,14 +91,19 @@ public class Player  extends GameObject{
     }
 
     public void render(Graphics g){
-        if(id == ID.Player) {g.setColor(Color.white);}
-        if(id == ID.Player2){g.setColor(Color.blue);}
-        g.fillRect(x, y, pWITDH, pHEIGHT);
+        /*if(id == ID.Player) {g.setColor(Color.white);}
+         if(id == ID.Player2){g.setColor(Color.blue);}
+         g.fillRect(x, y, pWITDH, pHEIGHT);*/
+
+        g.drawImage(ImageLoader.getImageLoader().getImage("margarite"),x,y,null);
     }
 
     public void setVelX(int velX){ this.velX = velX; }
     public void setVelY(int velY){ this.velY = velY; }
-    public int getVelX(){return velX;}
-    public int getVelY(){ return velY;}
+
+    public void moveX(int dx){ x += dx; }
+    public void moveY(int dy){ y += dy; }
+    public int getVelX(){return velX; }
+    public int getVelY(){ return velY; }
 
 }

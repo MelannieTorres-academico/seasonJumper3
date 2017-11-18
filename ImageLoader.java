@@ -9,30 +9,36 @@ public class ImageLoader {
 	private BufferedImage spring;
   private BufferedImage summer;
   private BufferedImage winter;
+
   private BufferedImage espinita;
   private BufferedImage hierbita;
   private BufferedImage fuegito;
 	private BufferedImage hielito;
+
 	private BufferedImage treeSummer;
 	private BufferedImage treeWinter;
 	private BufferedImage treeAutumn;
 	private BufferedImage treeSpring;
+
 	private BufferedImage level1Spring;
 	private BufferedImage level1Winter;
 	private BufferedImage level1Summer;
 	private BufferedImage level1Autumn;
+
 	private BufferedImage playerAutumnBack;
 	private BufferedImage playerAutumnFront;
 	private BufferedImage playerAutumnLeft;
 	private BufferedImage playerAutumnRight;
+
 	private BufferedImage level1;
+
+	private BufferedImage margarite;
+	
 	private static ImageLoader imgL;
 
   private final static String IMAGE_DIR = "img/";
 
-
 	public ImageLoader() {
-
 
 		try {
 			level1 = ImageIO.read(new File(IMAGE_DIR+"level1.png"));
@@ -56,6 +62,7 @@ public class ImageLoader {
 			playerAutumnFront = ImageIO.read(new File(IMAGE_DIR+"playerAutumnFront.png"));
 			playerAutumnLeft = ImageIO.read(new File(IMAGE_DIR+"playerAutumnLeft.png"));
 			playerAutumnRight = ImageIO.read(new File(IMAGE_DIR+"playerAutumnRight.png"));
+			margarite = ImageIO.read(new File(IMAGE_DIR+"margarite.png"));
 
 		}
     catch(IOException e){}
@@ -86,8 +93,7 @@ public class ImageLoader {
 	if(image_name.equalsIgnoreCase("level1Winter")){ return level1Winter; }
 	if(image_name.equalsIgnoreCase("level1Autumn")){ return level1Autumn; }
 	if(image_name.equalsIgnoreCase("level1Spring")){ return level1Spring; }
-
-
+	if(image_name.equalsIgnoreCase("margarite")){ return margarite; }
     return null;
 	}
 

@@ -49,4 +49,7 @@ interface GameState {
 
 		public void setContext(GameContext cont);
 		public void setHandler(Handler h);
+		public void setPlayer(Player p);
+		public void tick(Camera camera);
+
 }

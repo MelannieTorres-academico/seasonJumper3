@@ -37,6 +37,9 @@ public class SpringState implements GameState {
 	private Font font;
 	GameContext c;
 	Handler handler;
+	Player player;
+
+	private boolean[] keyDown=new boolean[4];
 
 
 	  public SpringState(){
@@ -56,15 +59,36 @@ public class SpringState implements GameState {
 			g.drawString("Spring",15,40);
 
 
+ 			handler.addObject(player);
+			handler.tick();
+			handler.render(g);
 		}
 
-		public void processKey(KeyEvent e){
-			int keyCode = e.getKeyCode();
-			if(keyCode == KeyEvent.VK_SPACE){
-				summer();
-			}
-		}
-		public void keyReleased(KeyEvent e){}
+
+				public void processKey(KeyEvent e){
+					int keyCode = e.getKeyCode();
+					if(keyCode == KeyEvent.VK_SPACE){
+						summer();
+					}
+
+		      if(keyCode == KeyEvent.VK_UP   ) { player.moveY(-10);}
+		      if(keyCode == KeyEvent.VK_DOWN ) { player.moveY(10); }
+		      if(keyCode == KeyEvent.VK_LEFT ) { player.moveX(-10); }
+		      if(keyCode == KeyEvent.VK_RIGHT) { player.moveX(10); }
+
+				}
+				public void keyReleased(KeyEvent e){
+					int key = e.getKeyCode();
+
+					//vertical movement
+					if(!keyDown[0] && !keyDown[1]){
+							//tempObject.setVely(0);
+					}
+					if(!keyDown[2] && !keyDown[3]){
+						//	tempObject.setVelX(0);
+					}
+				}
+
 
 
     public void clickMouse(MouseEvent e) {}
@@ -80,5 +104,6 @@ public class SpringState implements GameState {
     public void end(){}
     public void setContext(GameContext cont){ this.c = cont;}
 		public void setHandler(Handler h){this.handler=h;}
-
+		public void setPlayer(Player p){this.player=p;}
+		public void tick(Camera camera){camera.tick(player);}
 }

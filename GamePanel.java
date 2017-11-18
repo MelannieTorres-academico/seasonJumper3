@@ -13,6 +13,7 @@ public class GamePanel extends JPanel implements Runnable {
 	private volatile boolean end = false;
 	private String s;
 	private GameContext game;
+	private Camera camera;
 
 
 	public GamePanel(){
@@ -25,6 +26,7 @@ public class GamePanel extends JPanel implements Runnable {
 		readyForTermination();
 
 		game = new GameContext();
+		camera = new Camera(0,0, WIDTH, HEIGHT);
 
 		addMouseListener( new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
@@ -45,19 +47,60 @@ public class GamePanel extends JPanel implements Runnable {
 		}
 	}
 
-	public void run(){
+	/*public void run(){
 		while(end==false){
 			gameUpdate();
 			gameRender();
 			paintScreen();
 			
 			try{
-				Thread.sleep(20);
+				Thread.sleep(125);
 			}
 			catch(InterruptedException ex){}
 		}
 		System.exit(0);
 	}
+*/
+	//Taked from somebody esle, notch code, DONT touch
+public  void run(){
+	 this.requestFocus();
+		long lastTime = System.nanoTime();
+		double amountOfTicks = 60.0;
+		double ns = 1000000000 / amountOfTicks;
+		double delta = 0;
+		long timer = System.currentTimeMillis();
+		int frames = 0;
+
+		while(end==false){
+
+			 long now = System.nanoTime();
+				delta += (now - lastTime) / ns;
+				lastTime = now;
+
+				while(delta >= 1){
+				/*	for(int i = 0; i < handler.object.size(); i++){
+							if(handler.object.get(i).getID() == ID.Player){
+									camera.tick(handler.object.get(i));
+							}
+					}*/
+					game.tick(camera);
+					delta--;
+				}
+
+					gameUpdate();
+					gameRender();
+					paintScreen();
+					frames++;
+
+
+				if(System.currentTimeMillis() - timer > 1000){
+						timer += 1000;
+					 System.out.println("FPS: "+ frames);
+						frames = 0;
+				}
+		}
+	//	stop();
+}
 
 	private void gameUpdate(){
         if(dbImage == null){
@@ -71,7 +114,7 @@ public class GamePanel extends JPanel implements Runnable {
         }
       dbg.setColor(Color.black);
       dbg.fillRect(0,0,PWIDTH,PHEIGHT);
-      game.draw(dbg);
+      //game.draw(dbg);
 
 
 }
@@ -91,9 +134,13 @@ public class GamePanel extends JPanel implements Runnable {
 		}
 		dbg.setColor(Color.black);
 		dbg.fillRect(0,0,PWIDTH,PHEIGHT);
-		dbg.setColor(Color.black);
+		Graphics2D g2d = (Graphics2D) dbg;
+		g2d.translate(-camera.getX(), -camera.getY());
 
 		game.draw(dbg);
+
+		g2d.translate(camera.getX(), camera.getY());
+
 	}
 
 	private void gameOverMessage(){

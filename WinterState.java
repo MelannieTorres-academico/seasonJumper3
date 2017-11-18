@@ -37,8 +37,17 @@ public class WinterState implements GameState {
 	private Font font;
 	GameContext c;
 	Handler handler;
+	Player player;
+	int velX;
+	int velY;
+	private boolean[] keyDown=new boolean[4];
+
 
 	  public WinterState(){
+			keyDown[0] = false;
+			keyDown[1] = false;
+			keyDown[2] = false;
+			keyDown[3] = false;
 
 		}
 
@@ -54,16 +63,31 @@ public class WinterState implements GameState {
 			g.drawImage(ImageLoader.getImageLoader().getImage("winter"),0,0,null);
 			g.drawString("Winter",15,40);
 
+ 			handler.addObject(player);
+			handler.tick();
+			handler.render(g);
 
 		}
+
+
 
 		public void processKey(KeyEvent e){
 			int keyCode = e.getKeyCode();
 			if(keyCode == KeyEvent.VK_SPACE){
 				spring();
 			}
+
+      if(keyCode == KeyEvent.VK_UP   ) { player.moveY(-10);}
+      if(keyCode == KeyEvent.VK_DOWN ) { player.moveY(10); }
+      if(keyCode == KeyEvent.VK_LEFT ) { player.moveX(-10); }
+      if(keyCode == KeyEvent.VK_RIGHT) { player.moveX(10); }
+
 		}
-		public void keyReleased(KeyEvent e){}
+
+		public void keyReleased(KeyEvent e){
+			int key = e.getKeyCode();
+		}
+
 
 
     public void clickMouse(MouseEvent e) {}
@@ -77,7 +101,10 @@ public class WinterState implements GameState {
     public void lose(){}
     public void win(){}
     public void end(){}
-    public void setContext(GameContext cont){ this.c = cont;}
-		public void setHandler(Handler h){this.handler=h;}
-
+    public void setContext(GameContext cont){ this.c = cont; }
+		public void setHandler(Handler h){ this.handler=h; }
+		public void setPlayer(Player p){ this.player=p; }
+		public int getVelX(){ return velX; }
+		public int getVelY(){ return velY; }
+		public void tick(Camera camera){ camera.tick(player); }
 }
