@@ -114,6 +114,10 @@ public class AutumnState implements GameState {
                         player.moveY(player.getVelY()* -1);
                     }
             }
+
+            if(goal.getID() == ID.Goal){
+            	if(player.getBounds().intersects(goal.getBounds())){win();}
+        	}
              
         }
     }
@@ -172,7 +176,7 @@ public void processKey(KeyEvent e){
     public void summer(){}
     public void autumn(){}
     public void lose(){}
-    public void win(){}
+    public void win(){c.setState(c.getWinState());}
     public void end(){}
             public int getVelX(){ return velX; }
 		public int getVelY(){ return velY; }

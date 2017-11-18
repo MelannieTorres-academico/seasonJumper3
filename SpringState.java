@@ -160,26 +160,29 @@ public void processKey(KeyEvent e){
                         player.moveX(player.getVelX()* -1);
                         player.moveY(player.getVelY()* -1);
                     }
-            }
-             
+                }
+
+            if(goal.getID() == ID.Goal){
+            	if(player.getBounds().intersects(goal.getBounds())){win();}
+        	}
         }
     }
 
 
     public void clickMouse(MouseEvent e) {}
     public void menu(){}
-		public void help(){}
+	public void help(){}
     public void load(){}
     public void winter(){}
     public void spring(){}
     public void summer(){c.setState(c.getSummerState());}
     public void autumn(){}
     public void lose(){}
-    public void win(){}
+    public void win(){c.setState(c.getWinState());}
     public void end(){}
-        public int getVelX(){ return velX; }
-		public int getVelY(){ return velY; }
+    public int getVelX(){ return velX; }
+	public int getVelY(){ return velY; }
     public void setContext(GameContext cont){ this.c = cont;}
-		public void setPlayer(Player p){this.player=p;}
-		public void tick(Camera camera){camera.tick(player);}
+	public void setPlayer(Player p){this.player=p;}
+	public void tick(Camera camera){camera.tick(player);}
 }

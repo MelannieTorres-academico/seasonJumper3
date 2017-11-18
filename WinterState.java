@@ -166,6 +166,10 @@ public class WinterState implements GameState {
                         player.moveY(player.getVelY()* -1);
                     }
             }
+
+            if(goal.getID() == ID.Goal){
+            	if(player.getBounds().intersects(goal.getBounds())){win();}
+        	}
              
         }
     }
@@ -180,7 +184,7 @@ public class WinterState implements GameState {
     public void summer(){}
     public void autumn(){}
     public void lose(){}
-    public void win(){}
+    public void win(){c.setState(c.getWinState());}
     public void end(){}
     public void setContext(GameContext cont){ this.c = cont; }
 		public void setPlayer(Player p){ this.player=p; }

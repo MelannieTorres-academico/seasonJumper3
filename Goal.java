@@ -21,8 +21,7 @@ public class Goal extends GameObject{
     }
 
     public void render(Graphics g) {
-       g.setColor(Color.yellow);
-       g.fillRect(x, y, 32, 32);
+       g.drawImage(ImageLoader.getImageLoader().getImage("goal"), (int)x, (int)y, null);
     }
 
     public Rectangle getBounds() {

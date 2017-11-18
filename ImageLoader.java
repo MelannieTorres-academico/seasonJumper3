@@ -33,6 +33,7 @@ public class ImageLoader {
 	private BufferedImage tree;
 	private BufferedImage volumeOn;
 	private BufferedImage volumeOff;
+	private BufferedImage goal;
 	public static ImageLoader imgL;
 
   private final static String IMAGE_DIR = "img/";
@@ -64,6 +65,8 @@ public class ImageLoader {
 			volumeOn = ImageIO.read(new File(IMAGE_DIR+"volumeOn.png"));
 			volumeOff = ImageIO.read(new File(IMAGE_DIR+"volumeOff.png"));
 
+			goal = ImageIO.read(new File(IMAGE_DIR+"meta.png"));
+
 		}
     catch(IOException e){}
 	}
@@ -93,7 +96,7 @@ public class ImageLoader {
 	if(image_name.equalsIgnoreCase("margarite")){ return margarite;}
 	if(image_name.equalsIgnoreCase("volumeon")){ return volumeOn; }
 	if(image_name.equalsIgnoreCase("volumeoff")){ return volumeOff; }
-
+	if(image_name.equalsIgnoreCase("goal")){ return goal; }
 
     return null;
 	}

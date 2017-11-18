@@ -161,6 +161,10 @@ public class SummerState implements GameState {
                         player.moveY(player.getVelY()* -1);
                     }
             }
+
+             if(goal.getID() == ID.Goal){
+            	if(player.getBounds().intersects(goal.getBounds())){win();}
+        	}
              
         }
     }
@@ -174,7 +178,7 @@ public class SummerState implements GameState {
     public void summer(){}
     public void autumn(){c.setState(c.getAutumnState());}
     public void lose(){}
-    public void win(){}
+    public void win(){c.setState(c.getWinState());}
     public void end(){}
     		public int getVelX(){ return velX; }
 		public int getVelY(){ return velY; }
