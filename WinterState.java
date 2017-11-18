@@ -119,7 +119,7 @@ public class WinterState implements GameState {
             if(key == KeyEvent.VK_LEFT) {player.setVelX(-dx); keyDown[2] = true;} 
             if(key == KeyEvent.VK_RIGHT) {player.setVelX(dx); keyDown[3] = true;}
             }
-            if(keyCode == KeyEvent.VK_P) { if(pause==false){pause=true;}else{pause=false;} 
+            if(key == KeyEvent.VK_P) { if(pause==false){pause=true;}else{pause=false;} }
 
 
 

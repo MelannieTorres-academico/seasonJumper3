@@ -56,16 +56,7 @@ public class AutumnState implements GameState {
 
 		public AutumnState(GameContext c){
 			this.c = c;
-			loadLevel(ImageLoader.getImageLoader().getImage("level1"));
-
-
-	  public AutumnState(){
-		}
-
-		public AutumnState(GameContext c){
-			this.c = c;
-
-		}
+			loadLevel(ImageLoader.getImageLoader().getImage("level1"));}
 
 		public void loadLevel(BufferedImage image){
         int w = image.getWidth();
@@ -118,12 +109,12 @@ public void processKey(KeyEvent e){
 			int key = e.getKeyCode();
 			if(pause==false){
 			if(key == KeyEvent.VK_SPACE){winter();}
-            if(key == KeyEvent.VK_UP){player.setVely(-1); keyDown[0] = true;}
-            if(key == KeyEvent.VK_DOWN) {player.setVely(1); keyDown[1] = true;}
-            if(key == KeyEvent.VK_LEFT) {player.setVelX(-1); keyDown[2] = true;}
-            if(key == KeyEvent.VK_RIGHT) {player.setVelX(1); keyDown[3] = true;}
+            if(key == KeyEvent.VK_UP){player.setVely(-dy); keyDown[0] = true;}
+            if(key == KeyEvent.VK_DOWN) {player.setVely(dy); keyDown[1] = true;}
+            if(key == KeyEvent.VK_LEFT) {player.setVelX(-dx); keyDown[2] = true;}
+            if(key == KeyEvent.VK_RIGHT) {player.setVelX(dx); keyDown[3] = true;}
         	}
-        	
+        	if(key == KeyEvent.VK_P) { if(pause==false){pause=true;}else{pause=false;} }
 		}
 
 		public void keyReleased(KeyEvent e){
@@ -143,22 +134,6 @@ public void processKey(KeyEvent e){
 
 		}
 
-		}
-
-		public void processKey(KeyEvent e){
-			int keyCode = e.getKeyCode();
-
-				if(keyCode == KeyEvent.VK_SPACE){winter();}
-	      if(keyCode == KeyEvent.VK_UP   ) { player.moveY(-dy);}
-	      if(keyCode == KeyEvent.VK_DOWN ) { player.moveY(dy); }
-	      if(keyCode == KeyEvent.VK_LEFT ) { player.moveX(-dx); }
-	      if(keyCode == KeyEvent.VK_RIGHT) { player.moveX(dx); }
-			}
-			if(keyCode == KeyEvent.VK_P) { if(pause==false){pause=true;}else{pause=false;} }
-		}
-
-		public void keyReleased(KeyEvent e){	int key = e.getKeyCode(); }
->>>>>>> develop
     public void clickMouse(MouseEvent e) {}
     public void menu(){}
     public void help(){}
