@@ -18,5 +18,7 @@ public enum ID {
     Summer(),
     Autumn(),
     Spring(),
-    Winter();
+    Winter(),
+    Help(),
+    History();
 }

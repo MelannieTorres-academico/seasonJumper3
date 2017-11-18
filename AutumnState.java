@@ -42,8 +42,8 @@ public class AutumnState implements GameState {
 	private boolean[] keyDown=new boolean[4];
 	LinkedList<Enemy> enemy = new LinkedList<>();
 	Goal goal;
-	private int dx=1;
-	private int dy=1;
+	private int dx=5;
+	private int dy=5;
 	private volatile boolean pause = false;
 
 

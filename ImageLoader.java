@@ -38,6 +38,13 @@ public class ImageLoader {
 
 	private BufferedImage fireworks;
 
+	private BufferedImage helpImage;
+
+	private BufferedImage HistoryImage;
+
+	private BufferedImage SeasonJumper;
+
+
 	public static ImageLoader imgL;
 
   private final static String IMAGE_DIR = "img/";
@@ -72,6 +79,10 @@ public class ImageLoader {
 			goal = ImageIO.read(new File(IMAGE_DIR+"meta.png"));
 			fireworks = ImageIO.read(new File(IMAGE_DIR+"fireworks.png"));
 
+			helpImage = ImageIO.read(new File(IMAGE_DIR+"help.png"));
+			HistoryImage = ImageIO.read(new File(IMAGE_DIR+"history.png"));
+			SeasonJumper = ImageIO.read(new File(IMAGE_DIR+"seasonjumper.png"));
+
 		}
     catch(IOException e){}
 	}
@@ -103,6 +114,9 @@ public class ImageLoader {
 	if(image_name.equalsIgnoreCase("volumeoff")){ return volumeOff; }
 	if(image_name.equalsIgnoreCase("goal")){ return goal; }
 	if(image_name.equalsIgnoreCase("fireworks")){ return fireworks; }
+	if(image_name.equalsIgnoreCase("helpImage")){ return helpImage; }
+	if(image_name.equalsIgnoreCase("HistoryImage")){return HistoryImage;}
+	if(image_name.equalsIgnoreCase("SeasonJumper")){return SeasonJumper;}
 
     return null;
 	}

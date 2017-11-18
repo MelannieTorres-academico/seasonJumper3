@@ -58,7 +58,8 @@ public class MenuState implements GameState {
 		g.setColor(Color.white);
 
 		g.setFont(font);
-		g.drawString("Menu", 240, 70);
+		g.drawImage(ImageLoader.getImageLoader().getImage("SeasonJumper"),200,20,null);
+		//g.drawString("Menu", 240, 70);
 
 		g.setFont(font2);
 		g.drawString("Play", 270, 190);

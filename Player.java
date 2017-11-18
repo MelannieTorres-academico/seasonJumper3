@@ -59,11 +59,6 @@ public class Player  extends GameObject{
 
     }
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 576a561ecfa42104da0ab722c6ff42b7f8781e9f
     public void render(Graphics g){
         g.drawImage(ImageLoader.getImageLoader().getImage("margarite"),x,y,null);
     }

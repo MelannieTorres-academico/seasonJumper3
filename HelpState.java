@@ -31,10 +31,12 @@ import java.io.*;
 import java.util.*;
 
 public class HelpState implements GameState {
+		Player player;
 	  GameContext c;
 		Font font;
 		Font font2;
 		Font font3;
+		boolean history = false;
 
 
     public HelpState(){}
@@ -43,24 +45,39 @@ public class HelpState implements GameState {
 			this.c = c;
 		}
 
+
+
 		public void draw(Graphics g){
+
+		if(!history){
+			g.drawImage(ImageLoader.getImageLoader().getImage("helpImage"),0,0,null);
+		}else{
+			g.drawImage(ImageLoader.getImageLoader().getImage("historyImage"),0,0,null);
+		}
 
 				font  = new Font("arial", 1, 50);
 				font2 = new Font("arial", 1, 30);
 				font3 = new Font("arial", 1, 20);
-				g.setColor(Color.white);
-
-				g.setFont(font);
-				g.drawString("HELP", 240, 70);
-
-
-				g.setFont(font3);
-				g.drawString("Use the arrows keys to get to the yellow,", 100, 200);
-				g.drawString("beware of the monsters along the way!", 100, 225);
+				if(!history){
+					g.setColor(Color.black);
+				}else{
+					g.setColor(Color.white);
+				}
+				
 
 				g.setFont(font2);
-				g.drawRect(210, 350, 200, 64);
-				g.drawString("Back", 270, 390);
+				//g.drawRect(190, 50, 200, 64);
+				if(!history){
+					g.drawString("More", 240, 70);
+				}else{
+					g.drawString("Menu", 240, 70);
+
+					//g.setFont(font2);
+					//g.drawRect(210, 350, 200, 64);
+					//g.drawString("Back", 270, 390);
+
+
+				}
 
 
 
@@ -73,6 +90,16 @@ public class HelpState implements GameState {
 				int mx = e.getX();
 				int my = e.getY();
 				if(mouseOver(mx, my, 210, 350, 200, 64)){ menu(); }
+				if(mouseOver(mx, my, 190, 50, 200, 64)){
+					if(history){
+						history = false;
+						menu();
+					}else{
+						history = true;
+					}
+
+
+				}
 			}
 
 
