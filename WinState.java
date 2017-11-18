@@ -43,36 +43,34 @@ public class WinState implements GameState {
 			this.c = c;
 		}
 
-  		public void draw(Graphics g){
-  			i++;
-        font=new Font("arial", 1, 30);
-        g.setColor(color.white);
-        g.setFont(font);
-        //g.drawImage(ImageLoader.getImageLoader().getBackground(),0,0,null);
+		public void draw(Graphics g){
+			i++;
+      font=new Font("arial", 1, 30);
+      g.setColor(color.white);
+      g.setFont(font);
+      g.drawString("You win!", 270, 190);
+      g.drawString("Score: "+player.getScore(),230, 290);
+			if (i>600){
+				end();
+			}
+		}
 
-        g.drawString("You win!", 270, 190);
-        g.drawString("Score: "+player.getScore(),230, 290);
-  			if (i>600){
-  				end();
-  			}
-  		}
-
-      public void processKey(KeyEvent e){}
-      public void clickMouse(MouseEvent e) {}
-      public void keyReleased(KeyEvent e){}
-      public void menu(){}
-      public void help(){}
-      public void load(){}
-      public void winter(){}
-    	public void spring(){}
-    	public void summer(){}
-    	public void autumn(){}
-      public void lose(){}
-      public void win(){}
-      public void end(){c.setState(c.getEndState());}
-      public void setContext(GameContext cont){ this.c = cont;}
-      public void setPlayer(Player p){this.player=p;}
-      public void tick(Camera camera){}
-        public void setX(Camera camera){camera.setX(0);}
-        public void setY(Camera camera){camera.setY(0);}
+    public void processKey(KeyEvent e){}
+    public void clickMouse(MouseEvent e) {}
+    public void keyReleased(KeyEvent e){}
+    public void menu(){}
+    public void help(){}
+    public void load(){}
+    public void winter(){}
+  	public void spring(){}
+  	public void summer(){}
+  	public void autumn(){}
+    public void lose(){}
+    public void win(){}
+    public void end(){c.setState(c.getEndState());}
+    public void setContext(GameContext cont){ this.c = cont;}
+    public void setPlayer(Player p){this.player=p;}
+    public void tick(Camera camera){}
+    public void setX(Camera camera){camera.setX(0);}
+    public void setY(Camera camera){camera.setY(0);}
 }

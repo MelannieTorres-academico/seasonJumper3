@@ -15,10 +15,7 @@ public class Goal extends GameObject{
         super(x, y, id);
     }
 
-
-    public void tick() {
-
-    }
+    public void tick() {}
 
     public void render(Graphics g) {
        g.drawImage(ImageLoader.getImageLoader().getImage("goal"), (int)x, (int)y, null);

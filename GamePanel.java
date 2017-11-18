@@ -55,21 +55,6 @@ public class GamePanel extends JPanel implements Runnable {
 		}
 	}
 
-	/*public void run(){
-		while(end==false){
-			gameUpdate();
-			gameRender();
-			paintScreen();
-
-			try{
-				Thread.sleep(125);
-			}
-			catch(InterruptedException ex){}
-		}
-		System.exit(0);
-	}
-*/
-	//Taked from somebody esle, notch code, DONT touch
 
 
 public  void run(){
@@ -88,11 +73,6 @@ public  void run(){
 				lastTime = now;
 
 				while(delta >= 1){
-				/*	for(int i = 0; i < handler.object.size(); i++){
-							if(handler.object.get(i).getID() == ID.Player){
-									camera.tick(handler.object.get(i));
-							}
-					}*/
 					game.tick(camera);
 					delta--;
 				}

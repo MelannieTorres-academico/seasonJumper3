@@ -53,10 +53,7 @@ public class Player  extends GameObject{
     public void tick(){
         x += velX;
         y += velY;
-        //collision();
-
         hud.modifyScore(-1);
-
     }
 
     public void render(Graphics g){

@@ -31,14 +31,7 @@ public class Floor extends GameObject{
        }
     }
 
-    public Rectangle getBounds() {
-      return null;
-        //if(this.id ==ID.TreeAutumn || this.id ==ID.TreeSummer || this.id ==ID.TreeWinter || this.id ==ID.TreeSpring ){
-        //    return new Rectangle(x, y, 32, 46);
-        //}else{
-        //    return new Rectangle(x + 5, y + 5, 20, 20);
-        //}
-    }
+    public Rectangle getBounds() { return null; }
 
     public Rectangle getOffsetBoundsUp() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

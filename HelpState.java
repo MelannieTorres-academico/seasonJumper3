@@ -45,47 +45,27 @@ public class HelpState implements GameState {
 			this.c = c;
 		}
 
-
-
 		public void draw(Graphics g){
 
-		if(!history){
-			g.drawImage(ImageLoader.getImageLoader().getImage("helpImage"),0,0,null);
-		}else{
-			g.drawImage(ImageLoader.getImageLoader().getImage("historyImage"),0,0,null);
-		}
+			if(!history){ g.drawImage(ImageLoader.getImageLoader().getImage("helpImage"),0,0,null); }
+			else{ g.drawImage(ImageLoader.getImageLoader().getImage("historyImage"),0,0,null); }
 
-				font  = new Font("arial", 1, 50);
-				font2 = new Font("arial", 1, 30);
-				font3 = new Font("arial", 1, 20);
-				if(!history){
-					g.setColor(Color.black);
-				}else{
-					g.setColor(Color.white);
-				}
-				
+			font  = new Font("arial", 1, 50);
+			font2 = new Font("arial", 1, 30);
+			font3 = new Font("arial", 1, 20);
+			if(!history){
+				g.setColor(Color.black);
+			}else{
+				g.setColor(Color.white);
+			}
 
-				g.setFont(font2);
-				//g.drawRect(190, 50, 200, 64);
-				if(!history){
-					g.drawString("More", 240, 70);
-				}else{
-					g.drawString("Menu", 240, 70);
-
-					//g.setFont(font2);
-					//g.drawRect(210, 350, 200, 64);
-					//g.drawString("Back", 270, 390);
-
-
-				}
-
-
-
+			g.setFont(font2);
+			if(!history){ g.drawString("More", 240, 70); }
+			else{g.drawString("Menu", 240, 70); }
 		}
 
 		  public void processKey(KeyEvent e){}
 			public void keyReleased(KeyEvent e){}
-
 		  public void clickMouse(MouseEvent e) {
 				int mx = e.getX();
 				int my = e.getY();
@@ -97,8 +77,6 @@ public class HelpState implements GameState {
 					}else{
 						history = true;
 					}
-
-
 				}
 			}
 
@@ -117,7 +95,7 @@ public class HelpState implements GameState {
 			public void setPlayer(Player p){}
 			public void tick(Camera camera){}
 				public void setX(Camera camera){}
-				public void setY(Camera camera){}	
+				public void setY(Camera camera){}
 			private boolean mouseOver(int mx, int my,int x, int y, int width, int heigth){
 				if (mx > x && mx < x + width){
 						return (my >  y  && my < y + heigth);
