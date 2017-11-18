@@ -87,11 +87,7 @@ public class HelpState implements GameState {
       public void win(){}
       public void end(){}
       public void setContext(GameContext cont){ this.c = cont;}
-			public void setHandler(Handler h){}
 			public void setPlayer(Player p){}
-			public int getVelX(){return 0;}
-      public int getVelY(){return 0;}
-
 			public void tick(Camera camera){}
 			private boolean mouseOver(int mx, int my,int x, int y, int width, int heigth){
 				if (mx > x && mx < x + width){

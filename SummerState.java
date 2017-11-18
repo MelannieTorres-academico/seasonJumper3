@@ -36,20 +36,9 @@ public class SummerState implements GameState {
 	private Color color;
 	private Font font;
 	GameContext c;
-	Handler handler;
 	Player player;
 
-	private boolean[] keyDown=new boolean[4];
-
-
-
-	  public SummerState(){
-			keyDown[0] = false;
-			keyDown[1] = false;
-			keyDown[2] = false;
-			keyDown[3] = false;
-
-		}
+	  public SummerState(){}
 
 		public SummerState(GameContext c){
 			this.c = c;
@@ -62,10 +51,8 @@ public class SummerState implements GameState {
 			g.setColor(color);
 			g.drawImage(ImageLoader.getImageLoader().getImage("summer"),0,0,null);
 			g.drawString("Summer",15,40);
+			player.render(g);
 
- 			handler.addObject(player);
-			handler.tick();
-			handler.render(g);
 
 		}
 
@@ -100,7 +87,6 @@ public class SummerState implements GameState {
     public void win(){}
     public void end(){}
     public void setContext(GameContext cont){ this.c = cont;}
-		public void setHandler(Handler h){this.handler=h;}
 		public void setPlayer(Player p){this.player=p;}
 		public void tick(Camera camera){camera.tick(player);}
 }

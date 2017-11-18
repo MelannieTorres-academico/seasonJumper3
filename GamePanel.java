@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements Runnable {
 		readyForTermination();
 
 		game = new GameContext();
-		camera = new Camera(0,0, WIDTH, HEIGHT);
+		camera = new Camera(0,0, PWIDTH, PHEIGHT);
 
 		addMouseListener( new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {

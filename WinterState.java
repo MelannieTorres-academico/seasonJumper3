@@ -36,20 +36,13 @@ public class WinterState implements GameState {
 	private Color color;
 	private Font font;
 	GameContext c;
-	Handler handler;
 	Player player;
 	int velX;
 	int velY;
 	private boolean[] keyDown=new boolean[4];
 
 
-	  public WinterState(){
-			keyDown[0] = false;
-			keyDown[1] = false;
-			keyDown[2] = false;
-			keyDown[3] = false;
-
-		}
+	  public WinterState(){}
 
 		public WinterState(GameContext c){
 			this.c = c;
@@ -62,14 +55,8 @@ public class WinterState implements GameState {
 			g.setColor(color);
 			g.drawImage(ImageLoader.getImageLoader().getImage("winter"),0,0,null);
 			g.drawString("Winter",15,40);
-
- 			handler.addObject(player);
-			handler.tick();
-			handler.render(g);
-
+			player.render(g);
 		}
-
-
 
 		public void processKey(KeyEvent e){
 			int keyCode = e.getKeyCode();
@@ -102,7 +89,6 @@ public class WinterState implements GameState {
     public void win(){}
     public void end(){}
     public void setContext(GameContext cont){ this.c = cont; }
-		public void setHandler(Handler h){ this.handler=h; }
 		public void setPlayer(Player p){ this.player=p; }
 		public int getVelX(){ return velX; }
 		public int getVelY(){ return velY; }

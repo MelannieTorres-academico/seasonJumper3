@@ -72,10 +72,10 @@ public class GameContext {
     win.setContext(this);
 		end.setContext(this);
 
-		winter.setHandler(handler);
-		spring.setHandler(handler);
-		summer.setHandler(handler);
-		autumn.setHandler(handler);
+		// winter.setHandler(handler);
+		// spring.setHandler(handler);
+		// summer.setHandler(handler);
+		// autumn.setHandler(handler);
 
 		player 				= new Player(200, 200, ID.Player, handler);
 
@@ -101,7 +101,7 @@ public class GameContext {
 
 	public void setState(GameState s){ this.currentState = s; }
 	public void setContext(GameContext cont){}//this.context = cont;}
-	public void setHandler(Handler h){}//this.context = cont;}
+	//public void setHandler(Handler h){}//this.context = cont;}
 	public void setPlayer(Player p){}//this.context = cont;}
 
 
@@ -120,6 +120,7 @@ public class GameContext {
   public void lose(){currentState.lose(); }
   public void win(){currentState.win(); }
   public void end(){currentState.end(); }
+
 
 	public void tick(Camera camera){currentState.tick(camera);}
 }
