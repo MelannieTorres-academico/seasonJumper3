@@ -156,7 +156,7 @@ public class SummerState implements GameState {
              
              if(enemy.get(i).getID() == ID.TreeAutumn || enemy.get(i).getID() == ID.TreeSpring || enemy.get(i).getID() == ID.TreeWinter || enemy.get(i).getID() == ID.TreeSummer){
                 //collision with Basic enemy.get(i)
-                 if(player.getBounds().intersects(enemy.get(i).getBounds())){
+                 if(player.getOffsetBoundsUp().intersects(enemy.get(i).getBounds()) || player.getOffsetBoundsDown().intersects(enemy.get(i).getBounds())  || player.getOffsetBoundsLeft().intersects(enemy.get(i).getBounds()) || player.getOffsetBoundsRight().intersects(enemy.get(i).getBounds())){
                         player.moveX(player.getVelX()* -1);
                         player.moveY(player.getVelY()* -1);
                     }
