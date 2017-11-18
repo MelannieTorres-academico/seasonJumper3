@@ -37,12 +37,17 @@ public class AutumnState implements GameState {
 	GameContext c;
 	Player player;
 	int i;
+	private int dx=10;
+	private int dy=10;
+	private volatile boolean pause = false;
 
 
-	  public AutumnState(){}
+	  public AutumnState(){
+		}
 
 		public AutumnState(GameContext c){
 			this.c = c;
+
 		}
 
 		public void draw(Graphics g){
@@ -53,18 +58,21 @@ public class AutumnState implements GameState {
 			g.setColor(color);
 			g.drawImage(ImageLoader.getImageLoader().getImage("autumn"),0,0,null);
 			player.render(g);
+
 		}
 
 		public void processKey(KeyEvent e){
 			int keyCode = e.getKeyCode();
-			if(keyCode == KeyEvent.VK_SPACE){winter();}
-      if(keyCode == KeyEvent.VK_UP   ) { player.moveY(-10);}
-      if(keyCode == KeyEvent.VK_DOWN ) { player.moveY(10); }
-      if(keyCode == KeyEvent.VK_LEFT ) { player.moveX(-10); }
-      if(keyCode == KeyEvent.VK_RIGHT) { player.moveX(10); }
-
+			if(pause==false){
+				if(keyCode == KeyEvent.VK_SPACE){winter();}
+	      if(keyCode == KeyEvent.VK_UP   ) { player.moveY(-dy);}
+	      if(keyCode == KeyEvent.VK_DOWN ) { player.moveY(dy); }
+	      if(keyCode == KeyEvent.VK_LEFT ) { player.moveX(-dx); }
+	      if(keyCode == KeyEvent.VK_RIGHT) { player.moveX(dx); }
+			}
+			if(keyCode == KeyEvent.VK_P) { if(pause==false){pause=true;}else{pause=false;} }
 		}
-		
+
 		public void keyReleased(KeyEvent e){	int key = e.getKeyCode(); }
     public void clickMouse(MouseEvent e) {}
     public void menu(){}

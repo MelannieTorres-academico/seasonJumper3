@@ -37,6 +37,10 @@ public class SummerState implements GameState {
 	private Font font;
 	GameContext c;
 	Player player;
+	private int dx=10;
+	private int dy=10;
+	private volatile boolean pause = false;
+
 
 	  public SummerState(){}
 
@@ -57,19 +61,17 @@ public class SummerState implements GameState {
 		}
 
 
-
-				public void processKey(KeyEvent e){
-					int keyCode = e.getKeyCode();
-					if(keyCode == KeyEvent.VK_SPACE){
-						autumn();
-					}
-
-		      if(keyCode == KeyEvent.VK_UP   ) { player.moveY(-10);}
-		      if(keyCode == KeyEvent.VK_DOWN ) { player.moveY(10); }
-		      if(keyCode == KeyEvent.VK_LEFT ) { player.moveX(-10); }
-		      if(keyCode == KeyEvent.VK_RIGHT) { player.moveX(10); }
-
-				}
+		public void processKey(KeyEvent e){
+			int keyCode = e.getKeyCode();
+			if(pause==false){
+				if(keyCode == KeyEvent.VK_SPACE){autumn();}
+	      if(keyCode == KeyEvent.VK_UP   ) { player.moveY(-dy);}
+	      if(keyCode == KeyEvent.VK_DOWN ) { player.moveY(dy); }
+	      if(keyCode == KeyEvent.VK_LEFT ) { player.moveX(-dx); }
+	      if(keyCode == KeyEvent.VK_RIGHT) { player.moveX(dx); }
+			}
+			if(keyCode == KeyEvent.VK_P) { if(pause==false){pause=true;}else{pause=false;} }
+		}
 				public void keyReleased(KeyEvent e){
 					int key = e.getKeyCode();
 
