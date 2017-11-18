@@ -48,7 +48,7 @@ public class ImageLoader {
       		winter = ImageIO.read(new File(IMAGE_DIR+"winter.png"));
       		espinita = ImageIO.read(new File(IMAGE_DIR+"espinita.png"));
       		hierbita = ImageIO.read(new File(IMAGE_DIR+"hierbita.png"));
-      		fuegito = ImageIO.read(new File(IMAGE_DIR+"fuegito.png"));
+      		fuegito = ImageIO.read(new File(IMAGE_DIR+"fueguito.png"));
 			hielito = ImageIO.read(new File(IMAGE_DIR+"hielito.png"));
 			treeSummer = ImageIO.read(new File(IMAGE_DIR+"treeSummer.png"));
 			treeWinter = ImageIO.read(new File(IMAGE_DIR+"treeWinter.png"));
@@ -93,7 +93,7 @@ public class ImageLoader {
 	if(image_name.equalsIgnoreCase("level1Winter")){ return level1Winter; }
 	if(image_name.equalsIgnoreCase("level1Autumn")){ return level1Autumn; }
 	if(image_name.equalsIgnoreCase("level1Spring")){ return level1Spring; }
-	if(image_name.equalsIgnoreCase("margarite")){ return margarite; }
+	if(image_name.equalsIgnoreCase("margarite")){ return margarite;}
     return null;
 	}
 

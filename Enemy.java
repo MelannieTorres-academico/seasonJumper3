@@ -17,8 +17,17 @@ public class Enemy extends GameObject{
     public void tick() {}
 
     public void render(Graphics g) {
-       if( id == ID.Enemy){
-         g.drawImage(ImageLoader.getImageLoader().getImage("treeSpring"), (int)x, (int)y, null);
+       if(id == ID.TreeAutumn){
+         g.drawImage(ImageLoader.getImageLoader().getImage("TreeAutumn"), (int)x, (int)y, null);
+       }
+       if(id == ID.TreeSummer){
+         g.drawImage(ImageLoader.getImageLoader().getImage("TreeSummer"), (int)x, (int)y, null);
+       }
+       if(id == ID.TreeWinter){
+         g.drawImage(ImageLoader.getImageLoader().getImage("TreeWinter"), (int)x, (int)y, null);
+       }
+       if(id == ID.TreeSpring){
+         g.drawImage(ImageLoader.getImageLoader().getImage("TreeSpring"), (int)x, (int)y, null);
        }
        if(id == ID.Fuegito){
          g.drawImage(ImageLoader.getImageLoader().getImage("fueguito"), (int)x, (int)y, null);
@@ -35,7 +44,7 @@ public class Enemy extends GameObject{
     }
 
     public Rectangle getBounds() {
-        if(this.id ==ID.Enemy){
+        if(this.id ==ID.TreeAutumn || this.id ==ID.TreeSummer || this.id ==ID.TreeWinter || this.id ==ID.TreeSpring ){
             return new Rectangle(x, y, 32, 46);
         }else{
             return new Rectangle(x + 5, y + 5, 20, 20);

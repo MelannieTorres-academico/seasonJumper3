@@ -37,41 +37,26 @@ public class AutumnState implements GameState {
 	private Font font;
 	GameContext c;
 	Player player;
-	int i;
+			int velX;
+	int velY;
+	private boolean[] keyDown=new boolean[4];
+	LinkedList<Enemy> enemy = new LinkedList<>();
+	Goal goal;
 
 
-	  public AutumnState(){}
+
+
+
+	  	public AutumnState(){
+	  		loadLevel(ImageLoader.getImageLoader().getImage("level1"));
+	  	}
 
 		public AutumnState(GameContext c){
 			this.c = c;
-		}
-
-		public void draw(Graphics g){
-			i++;
-			color=new Color(53, 171, 255);
-			font=new Font("Verdana", Font.BOLD, 18);
-			g.setFont(font);
-			g.setColor(color);
-			g.drawImage(ImageLoader.getImageLoader().getImage("autumn"),0,0,null);
-
-
 			loadLevel(ImageLoader.getImageLoader().getImage("level1"));
-
-			player.render(g);
-
 		}
 
-		public void processKey(KeyEvent e){
-			int keyCode = e.getKeyCode();
-			if(keyCode == KeyEvent.VK_SPACE){winter();}
-      if(keyCode == KeyEvent.VK_UP   ) { player.moveY(-10);}
-      if(keyCode == KeyEvent.VK_DOWN ) { player.moveY(10); }
-      if(keyCode == KeyEvent.VK_LEFT ) { player.moveX(-10); }
-      if(keyCode == KeyEvent.VK_RIGHT) { player.moveX(10); }
-
-		}
-		
-	public void loadLevel(BufferedImage image){
+		public void loadLevel(BufferedImage image){
         int w = image.getWidth();
         int h = image.getHeight();
         for(int xx = 0; xx < w; xx++){
@@ -80,27 +65,87 @@ public class AutumnState implements GameState {
                 int red = (pixel >> 16) & 0xff;
                 int green = (pixel >> 8) & 0xff;
                 int blue = (pixel) & 0xff;
-                //System.out.println("X:" + xx + "Y: " + yy);
-                if(green == 255 && red == 255 && blue == 255){ //white
-                    handler.addObject(new Enemy(xx*32, yy*32, ID.Hielito));
-                }else if(red == 255 && blue == 255){ //purple
-                	handler.addObject(new Enemy(xx*32,yy*32, ID.Espinita));
-                }else if(green == 255 && blue == 255){ //cyan
-                    handler.addObject(new Enemy(xx*32, yy*32, ID.Hierbita));
-                }else if(green == 255 && red == 255){ //yellow
-                    handler.addObject(new BasicMeta(xx*32, yy*32, ID.BasicMeta));
-                }else if(green == 255){ //green
-                    handler.addObject(new Enemy(xx*32, yy*32, ID.Fuegito));
-                }else if(red == 255){ //red
-                   handler.addObject(new Enemy(xx*32, yy*32, ID.Enemy));
-                }else if(blue == 255){ //blue
-                   //handler.addObject(new Player(xx*32, yy*32, ID.Player, handler));
-                }
-            }
-        }
-    }
 
-		public void keyReleased(KeyEvent e){	int key = e.getKeyCode(); }
+                if(green == 0 && red == 0 && blue ==0){
+                	//floor.add(new Floor(xx*120, yy*120, ID.Autumn));
+                }else if(green == 255 && red == 255 && blue == 255){ //white
+                    //enemy.add(new Enemy(xx*32, yy*32, ID.Hielito));
+                }else if(red == 255 && blue == 255){ //purple
+                    enemy.add(new Enemy(xx*32, yy*32, ID.Espinita));
+                }else if(green == 255 && blue == 255){ //cyan
+                    //enemy.add(new Enemy(xx*32, yy*32, ID.Hierbita));
+                }else if(green == 255 && red == 255){ //yellow
+                    goal = new Goal(xx*32, yy*32, ID.Goal);
+                }else if(green == 255){ //green
+                    //enemy.add(new Enemy(xx*32, yy*32, ID.Fuegito));
+                }else if(red == 255){ //red
+                    enemy.add(new Enemy(xx*32, yy*32, ID.TreeAutumn));
+                }else if(blue == 255){ //blue
+                    //handler.addObject(new Player(xx*32, yy*32, ID.Player, handler));
+                }
+                
+            	}
+        	}
+    	}
+
+		public void draw(Graphics g){
+			//color=new Color(53, 171, 255);
+			//font=new Font("Verdana", Font.BOLD, 18);
+			//g.setFont(font);
+			//g.setColor(color);
+			g.drawImage(ImageLoader.getImageLoader().getImage("autumn"),0,0,null);
+			player.render(g);
+			player.tick();
+        	for(int i = 0; i  < enemy.size(); i++){
+        		enemy.get(i).render(g);
+        	}
+        	goal.render(g);
+
+		}
+
+public void processKey(KeyEvent e){
+			int key = e.getKeyCode();
+			if(key == KeyEvent.VK_SPACE){
+				winter();
+			}
+
+                if(key == KeyEvent.VK_UP){
+                    player.setVely(-1); keyDown[0] = true;
+                }
+                
+                if(key == KeyEvent.VK_DOWN) {
+                    player.setVely(1); keyDown[1] = true;
+                }
+                
+                if(key == KeyEvent.VK_LEFT) {
+                    player.setVelX(-1); keyDown[2] = true;
+                }
+                
+                if(key == KeyEvent.VK_RIGHT) {
+                    player.setVelX(1); keyDown[3] = true;
+                }
+
+
+
+
+		}
+
+		public void keyReleased(KeyEvent e){
+			int key = e.getKeyCode();
+
+			    if(key == KeyEvent.VK_UP){ keyDown[0] = false;}
+                if(key == KeyEvent.VK_DOWN) {keyDown[1] = false;}
+                if(key == KeyEvent.VK_LEFT) {keyDown[2] = false;}
+                if(key == KeyEvent.VK_RIGHT) {keyDown[3] = false;}
+
+                if(!keyDown[0] && !keyDown[1]){
+                    player.setVely(0);
+                }
+                if(!keyDown[2] && !keyDown[3]){
+                    player.setVelX(0);
+                }
+
+		}
 
     public void clickMouse(MouseEvent e) {}
     public void menu(){}
@@ -113,6 +158,8 @@ public class AutumnState implements GameState {
     public void lose(){}
     public void win(){}
     public void end(){}
+            public int getVelX(){ return velX; }
+		public int getVelY(){ return velY; }
     public void setContext(GameContext cont){ this.c = cont;}
 		public void setPlayer(Player p){this.player=p;}
 		public void tick(Camera camera){camera.tick(player);}

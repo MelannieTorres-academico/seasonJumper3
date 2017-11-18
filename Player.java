@@ -71,7 +71,7 @@ public class Player  extends GameObject{
                     HUD.HEALTH-=2;
                 }
             }
-             if(tempObject.getID() == ID.BasicMeta){
+             if(tempObject.getID() == ID.Goal){
                 //collision with Basic Enemy
                 if(getBounds().intersects(tempObject.getBounds())){
                     HUD.level++;
@@ -79,7 +79,7 @@ public class Player  extends GameObject{
                 
             }
              
-             if(tempObject.getID() == ID.Enemy){
+             if(tempObject.getID() == ID.TreeAutumn || tempObject.getID() == ID.TreeSpring || tempObject.getID() == ID.TreeWinter || tempObject.getID() == ID.TreeSummer){
                 //collision with Basic Enemy
                  if(getBounds().intersects(tempObject.getBounds())){
                         x += velX* -1;
@@ -91,10 +91,6 @@ public class Player  extends GameObject{
     }
 
     public void render(Graphics g){
-        /*if(id == ID.Player) {g.setColor(Color.white);}
-         if(id == ID.Player2){g.setColor(Color.blue);}
-         g.fillRect(x, y, pWITDH, pHEIGHT);*/
-
         g.drawImage(ImageLoader.getImageLoader().getImage("margarite"),x,y,null);
     }
 
