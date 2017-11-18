@@ -144,6 +144,8 @@ public void processKey(KeyEvent e){
                 //collision with Basic enemy.get(i)
                 if(player.getBounds().intersects(enemy.get(i).getBounds())){
                     HUD.HEALTH-=2;
+										lose();
+
                 }
             }
              if(enemy.get(i).getID() == ID.Goal){
@@ -177,7 +179,7 @@ public void processKey(KeyEvent e){
 		public void spring(){}
 		public void summer(){c.setState(c.getSummerState());}
 		public void autumn(){}
-		public void lose(){}
+			public void lose(){c.setState(c.getLoseState());}
 		public void win(){c.setState(c.getWinState());}
 		public void end(){}
 		public int getVelX(){ return velX; }
@@ -185,4 +187,6 @@ public void processKey(KeyEvent e){
 		public void setContext(GameContext cont){ this.c = cont;}
 		public void setPlayer(Player p){this.player=p;}
 		public void tick(Camera camera){camera.tick(player);}
+		public void setX(Camera camera){}
+		public void setY(Camera camera){}
 }

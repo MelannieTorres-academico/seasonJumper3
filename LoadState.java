@@ -20,43 +20,40 @@
  *
  *
  */
-
-import java.awt.Color;
+ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
-import java.awt.Font;
 import java.io.*;
 import java.util.*;
+import java.awt.Font;
+
 
 public class LoadState implements GameState {
-    private int i;
+    private int i=0;
 	  GameContext c;
-    private Color color;
-    private Font font;
+    Font font;
 
-    public LoadState(){}
+    public LoadState(){
+      font =new Font("arial", 1, 50);
+
+    }
 
 		public LoadState(GameContext c){
 			this.c = c;
 		}
 
 		public void draw(Graphics g){
-      i++;
-      font=new Font("Verdana", Font.BOLD, 20);
-      color=new Color(122, 24, 232);
-      g.setColor(color);
+      g.setColor(Color.white);
       g.setFont(font);
-      //g.drawImage(ImageLoader.getImageLoader().getBackground(),0,0,null);
 
+      i++;
 
-			if (i<10)    { g.drawString("3",200, 200); }
-			else if(i<20){ g.drawString("2",200, 200); }
-			else if(i<30){ g.drawString("1",200, 200); }
-			else{
-        winter();
-      }
+			if (i<200)    {g.drawString("3",300, 250); }
+			else if(i<400){ g.drawString("2",300, 250); }
+			else if(i<600){ g.drawString("1",300, 250); }
+			else{ winter(); }
 		}
 
 		  public void processKey(KeyEvent e){}
@@ -75,4 +72,6 @@ public class LoadState implements GameState {
       public void setContext(GameContext cont){ this.c = cont;}
       public void setPlayer(Player p){}
       public void tick(Camera camera){}
+        public void setX(Camera camera){}
+        public void setY(Camera camera){}
 }

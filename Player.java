@@ -54,14 +54,16 @@ public class Player  extends GameObject{
         x += velX;
         y += velY;
         //collision();
-        if(HUD.HEALTH == 0){
-            System.exit(0);
-        }
+
         hud.modifyScore(-1);
 
     }
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 576a561ecfa42104da0ab722c6ff42b7f8781e9f
     public void render(Graphics g){
         g.drawImage(ImageLoader.getImageLoader().getImage("margarite"),x,y,null);
     }

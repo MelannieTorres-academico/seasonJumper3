@@ -144,6 +144,8 @@ public class SummerState implements GameState {
                 //collision with Basic enemy.get(i)
                 if(player.getBounds().intersects(enemy.get(i).getBounds())){
                     HUD.HEALTH-=2;
+										lose();
+
                 }
             }
              if(enemy.get(i).getID() == ID.Goal){
@@ -151,9 +153,9 @@ public class SummerState implements GameState {
                 if(player.getBounds().intersects(enemy.get(i).getBounds())){
                     HUD.level++;
                 }
-                
+
             }
-             
+
              if(enemy.get(i).getID() == ID.TreeAutumn || enemy.get(i).getID() == ID.TreeSpring || enemy.get(i).getID() == ID.TreeWinter || enemy.get(i).getID() == ID.TreeSummer){
                 //collision with Basic enemy.get(i)
                  if(player.getOffsetBoundsUp().intersects(enemy.get(i).getBounds()) || player.getOffsetBoundsDown().intersects(enemy.get(i).getBounds())  || player.getOffsetBoundsLeft().intersects(enemy.get(i).getBounds()) || player.getOffsetBoundsRight().intersects(enemy.get(i).getBounds())){
@@ -165,7 +167,7 @@ public class SummerState implements GameState {
              if(goal.getID() == ID.Goal){
             	if(player.getBounds().intersects(goal.getBounds())){win();}
         	}
-             
+
         }
     }
 
@@ -177,7 +179,7 @@ public class SummerState implements GameState {
     public void spring(){}
     public void summer(){}
     public void autumn(){c.setState(c.getAutumnState());}
-    public void lose(){}
+		public void lose(){c.setState(c.getLoseState());}
     public void win(){c.setState(c.getWinState());}
     public void end(){}
     public int getVelX(){ return velX; }
@@ -185,4 +187,6 @@ public class SummerState implements GameState {
     public void setContext(GameContext cont){ this.c = cont;}
 		public void setPlayer(Player p){this.player=p;}
 		public void tick(Camera camera){camera.tick(player);}
+		public void setX(Camera camera){}
+		public void setY(Camera camera){}
 }

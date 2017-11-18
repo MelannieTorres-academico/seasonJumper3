@@ -72,15 +72,22 @@ public class GameContext {
 		end.setContext(this);
 
 
-
 		player = new Player(608, 1219, ID.Player);
 
 		winter.setPlayer(player);
 		spring.setPlayer(player);
 		summer.setPlayer(player);
 		autumn.setPlayer(player);
+		win.setPlayer(player);
+		lose.setPlayer(player);
+		end.setPlayer(player);
+
+
+
 
 		currentState  = menu;
+
+
 
 	}
 
@@ -118,4 +125,6 @@ public class GameContext {
 
 
 	public void tick(Camera camera){currentState.tick(camera);}
+	public void setX(Camera camera){currentState.setX(camera);}
+	public void setY(Camera camera){currentState.setY(camera);}
 }
