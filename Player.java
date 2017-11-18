@@ -23,6 +23,8 @@ public class Player  extends GameObject{
 
     public Player(int x, int y, ID id, Handler handler){
         super(x, y, id);
+        hud=new HUD();
+
         this.handler = handler;
     }
 
@@ -59,26 +61,29 @@ public class Player  extends GameObject{
         if(HUD.HEALTH == 0){
             System.exit(0);
         }
+        hud.modifyScore(-1);
+
     }
 
     private void collision(){
         for(int i =0 ; i <handler.object.size(); i++){
             GameObject tempObject = handler.object.get(i);
-            
+
             if(tempObject.getID() == ID.Fuegito || tempObject.getID() == ID.Hielito || tempObject.getID() == ID.Espinita || tempObject.getID() == ID.Hierbita){
                 //collision with Basic Enemy
                 if(getBounds().intersects(tempObject.getBounds())){
+                    hud.modifyScore(-2);
                     HUD.HEALTH-=2;
                 }
             }
              if(tempObject.getID() == ID.Goal){
                 //collision with Basic Enemy
                 if(getBounds().intersects(tempObject.getBounds())){
-                    HUD.level++;
+                    hud.upLevel();
                 }
-                
+
             }
-             
+
              if(tempObject.getID() == ID.TreeAutumn || tempObject.getID() == ID.TreeSpring || tempObject.getID() == ID.TreeWinter || tempObject.getID() == ID.TreeSummer){
                 //collision with Basic Enemy
                  if(getBounds().intersects(tempObject.getBounds())){
@@ -86,7 +91,7 @@ public class Player  extends GameObject{
                         y += velY * -1;
                     }
             }
-             
+
         }
     }
 
@@ -101,5 +106,8 @@ public class Player  extends GameObject{
     public void moveY(int dy){ y += dy; }
     public int getVelX(){return velX; }
     public int getVelY(){ return velY; }
+    public int getScore(){ return hud.getScore();}
+    public int getX(){return x;}
+    public int getY(){return y;}
 
 }

@@ -84,7 +84,7 @@ public class SpringState implements GameState {
                 }else if(blue == 255){ //blue
                     //handler.addObject(new Player(xx*32, yy*32, ID.Player, handler));
                 }
-                
+
             	}
         	}
     	}
@@ -148,7 +148,7 @@ public void processKey(KeyEvent e){
     public void lose(){}
     public void win(){}
     public void end(){}
-        public int getVelX(){ return velX; }
+    public int getVelX(){ return velX; }
 		public int getVelY(){ return velY; }
     public void setContext(GameContext cont){ this.c = cont;}
 		public void setPlayer(Player p){this.player=p;}

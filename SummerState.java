@@ -83,7 +83,7 @@ public class SummerState implements GameState {
                 }else if(blue == 255){ //blue
                     //handler.addObject(new Player(xx*32, yy*32, ID.Player, handler));
                 }
-                
+
             	}
         	}
     	}
@@ -122,7 +122,7 @@ public class SummerState implements GameState {
 
 		public void keyReleased(KeyEvent e){
 			int key = e.getKeyCode();
-			
+
 			    if(key == KeyEvent.VK_UP){ keyDown[0] = false;}
                 if(key == KeyEvent.VK_DOWN) {keyDown[1] = false;}
                 if(key == KeyEvent.VK_LEFT) {keyDown[2] = false;}
@@ -147,7 +147,7 @@ public class SummerState implements GameState {
     public void lose(){}
     public void win(){}
     public void end(){}
-    		public int getVelX(){ return velX; }
+    public int getVelX(){ return velX; }
 		public int getVelY(){ return velY; }
     public void setContext(GameContext cont){ this.c = cont;}
 		public void setPlayer(Player p){this.player=p;}

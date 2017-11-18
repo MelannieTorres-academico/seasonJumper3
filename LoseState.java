@@ -35,6 +35,8 @@ public class LoseState implements GameState {
 	  GameContext c;
     private Color color;
     private Font font;
+    Player player;
+
 
     public LoseState(){}
 
@@ -69,6 +71,6 @@ public class LoseState implements GameState {
       public void win(){}
       public void end(){c.setState(c.getEndState());}
       public void setContext(GameContext cont){ this.c = cont;}
-      public void setPlayer(Player p){}
+      public void setPlayer(Player p){this.player=p;}
       public void tick(Camera camera){}
 }
