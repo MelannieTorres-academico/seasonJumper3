@@ -20,10 +20,6 @@ public class ImageLoader {
 	private BufferedImage treeAutumn;
 	private BufferedImage treeSpring;
 
-	private BufferedImage level1Spring;
-	private BufferedImage level1Winter;
-	private BufferedImage level1Summer;
-	private BufferedImage level1Autumn;
 
 	private BufferedImage playerAutumnBack;
 	private BufferedImage playerAutumnFront;
@@ -44,28 +40,26 @@ public class ImageLoader {
 	public ImageLoader() {
 
 		try {
+			margarite = ImageIO.read(new File(IMAGE_DIR+"margarite.png"));
+
 			level1 = ImageIO.read(new File(IMAGE_DIR+"level1.png"));
 			autumn = ImageIO.read(new File(IMAGE_DIR+"autumn.png"));
 			spring = ImageIO.read(new File(IMAGE_DIR+"spring.png"));
-      		summer = ImageIO.read(new File(IMAGE_DIR+"summer.png"));
-      		winter = ImageIO.read(new File(IMAGE_DIR+"winter.png"));
-      		espinita = ImageIO.read(new File(IMAGE_DIR+"espinita.png"));
-      		hierbita = ImageIO.read(new File(IMAGE_DIR+"hierbita.png"));
-      		fuegito = ImageIO.read(new File(IMAGE_DIR+"fueguito.png"));
+  		summer = ImageIO.read(new File(IMAGE_DIR+"summer.png"));
+  		winter = ImageIO.read(new File(IMAGE_DIR+"winter.png"));
+  		espinita = ImageIO.read(new File(IMAGE_DIR+"espinita.png"));
+  		hierbita = ImageIO.read(new File(IMAGE_DIR+"hierbita.png"));
+  		fuegito = ImageIO.read(new File(IMAGE_DIR+"fueguito.png"));
 			hielito = ImageIO.read(new File(IMAGE_DIR+"hielito.png"));
 			treeSummer = ImageIO.read(new File(IMAGE_DIR+"treeSummer.png"));
 			treeWinter = ImageIO.read(new File(IMAGE_DIR+"treeWinter.png"));
 			treeSpring = ImageIO.read(new File(IMAGE_DIR+"treeSpring.png"));
 			treeAutumn = ImageIO.read(new File(IMAGE_DIR+"treeAutumn.png"));
-			level1Summer = ImageIO.read(new File(IMAGE_DIR+"level1Summer.png"));
-			level1Winter = ImageIO.read(new File(IMAGE_DIR+"level1Winter.png"));
-			level1Spring = ImageIO.read(new File(IMAGE_DIR+"level1Spring.png"));
-			level1Autumn = ImageIO.read(new File(IMAGE_DIR+"level1Autumn.png"));
+
 			playerAutumnBack = ImageIO.read(new File(IMAGE_DIR+"playerAutumnBack.png"));
 			playerAutumnFront = ImageIO.read(new File(IMAGE_DIR+"playerAutumnFront.png"));
 			playerAutumnLeft = ImageIO.read(new File(IMAGE_DIR+"playerAutumnLeft.png"));
 			playerAutumnRight = ImageIO.read(new File(IMAGE_DIR+"playerAutumnRight.png"));
-			margarite = ImageIO.read(new File(IMAGE_DIR+"margarite.png"));
 
 			volumeOn = ImageIO.read(new File(IMAGE_DIR+"volumeOn.png"));
 			volumeOff = ImageIO.read(new File(IMAGE_DIR+"volumeOff.png"));
@@ -95,10 +89,7 @@ public class ImageLoader {
 	if(image_name.equalsIgnoreCase("treeSpring")){ return treeSpring; }
 	if(image_name.equalsIgnoreCase("treeWinter")){ return treeWinter; }
 	if(image_name.equalsIgnoreCase("treeAutumn")){ return treeAutumn; }
-	if(image_name.equalsIgnoreCase("level1Summer")){ return level1Summer; }
-	if(image_name.equalsIgnoreCase("level1Winter")){ return level1Winter; }
-	if(image_name.equalsIgnoreCase("level1Autumn")){ return level1Autumn; }
-	if(image_name.equalsIgnoreCase("level1Spring")){ return level1Spring; }
+
 	if(image_name.equalsIgnoreCase("margarite")){ return margarite;}
 	if(image_name.equalsIgnoreCase("volumeon")){ return volumeOn; }
 	if(image_name.equalsIgnoreCase("volumeoff")){ return volumeOff; }
