@@ -60,7 +60,7 @@ public class GamePanel extends JPanel implements Runnable {
 			gameUpdate();
 			gameRender();
 			paintScreen();
-			
+
 			try{
 				Thread.sleep(125);
 			}
@@ -107,6 +107,8 @@ public  void run(){
 						frames = 0;
 				}
 			}
+			game.setX(camera);
+			game.setY(camera);
 		}
 	//	stop();
 }

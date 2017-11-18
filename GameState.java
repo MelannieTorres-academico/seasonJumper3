@@ -50,5 +50,7 @@ interface GameState {
 		public void setContext(GameContext cont);
 		public void setPlayer(Player p);
 		public void tick(Camera camera);
+		public void setX(Camera camera);
+		public void setY(Camera camera);
 
 }
