@@ -61,7 +61,7 @@ public class HelpState implements GameState {
 				g.setFont(font2);
 				g.drawRect(210, 350, 200, 64);
 				g.drawString("Back", 270, 390);
-				
+
 
 
 		}

@@ -84,7 +84,7 @@ public class SpringState implements GameState {
                 }else if(blue == 255){ //blue
                     //handler.addObject(new Player(xx*32, yy*32, ID.Player, handler));
                 }
-                
+
             	}
         	}
     	}
@@ -151,9 +151,9 @@ public void processKey(KeyEvent e){
                 if(player.getBounds().intersects(enemy.get(i).getBounds())){
                     HUD.level++;
                 }
-                
+
             }
-             
+
              if(enemy.get(i).getID() == ID.TreeAutumn || enemy.get(i).getID() == ID.TreeSpring || enemy.get(i).getID() == ID.TreeWinter || enemy.get(i).getID() == ID.TreeSummer){
                 //collision with Basic enemy.get(i)
                  if(player.getBounds().intersects(enemy.get(i).getBounds())){
@@ -169,20 +169,20 @@ public void processKey(KeyEvent e){
     }
 
 
-    public void clickMouse(MouseEvent e) {}
-    public void menu(){}
-	public void help(){}
-    public void load(){}
-    public void winter(){}
-    public void spring(){}
-    public void summer(){c.setState(c.getSummerState());}
-    public void autumn(){}
-    public void lose(){}
-    public void win(){c.setState(c.getWinState());}
-    public void end(){}
-    public int getVelX(){ return velX; }
-	public int getVelY(){ return velY; }
-    public void setContext(GameContext cont){ this.c = cont;}
-	public void setPlayer(Player p){this.player=p;}
-	public void tick(Camera camera){camera.tick(player);}
+		public void clickMouse(MouseEvent e) {}
+		public void menu(){}
+		public void help(){}
+		public void load(){}
+		public void winter(){}
+		public void spring(){}
+		public void summer(){c.setState(c.getSummerState());}
+		public void autumn(){}
+		public void lose(){}
+		public void win(){c.setState(c.getWinState());}
+		public void end(){}
+		public int getVelX(){ return velX; }
+		public int getVelY(){ return velY; }
+		public void setContext(GameContext cont){ this.c = cont;}
+		public void setPlayer(Player p){this.player=p;}
+		public void tick(Camera camera){camera.tick(player);}
 }

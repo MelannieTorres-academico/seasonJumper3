@@ -32,10 +32,10 @@ import java.util.*;
 
 public class WinState implements GameState {
     private int i=0;
-    private int player;
-	  GameContext c;
+¡	  GameContext c;
     private Color color;
     private Font font;
+    Player player;
 
     public WinState(){
     }
@@ -71,6 +71,6 @@ public class WinState implements GameState {
       public void win(){}
       public void end(){c.setState(c.getEndState());}
       public void setContext(GameContext cont){ this.c = cont;}
-      public void setPlayer(Player p){}
+      public void setPlayer(Player p){this.player=p;}
       public void tick(Camera camera){}
 }

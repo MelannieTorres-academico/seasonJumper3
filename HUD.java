@@ -7,24 +7,34 @@ import java.awt.Graphics;
  */
 public class HUD {
 
-    private static final int MAXHEALTH = 2;
-    private int greenValue = 255;
-    public static int HEALTH = MAXHEALTH;
-    private int score = 0;
-    public static int level = 1;
 
-    public void tick(){
+    private int score = 60000;
+    public static int level = 1;
+    public static int HEALTH=100;
+    /*public void tick(){
       //  HEALTH = Game.clamp(HEALTH, 0, MAXHEALTH);
         score++;
-    }
+    }*/
 
     public void render(Graphics g){
        g.drawString("Score: " + score/50, 10, 48);
        g.drawString("Level: " + level, 10, 64);
     }
-
-    public int getTime(){
-        return score/50;
+    public void setScore(int s){
+      score=s;
     }
+    public int getScore(){
+      return score/200;
+    }
+    public void modifyScore(int ds){
+      score+=ds;
+    }
+    public void upLevel(){
+      level++;
+    }
+
+    /*public int getTime(){
+        return score/50;
+    }*/
 
 }

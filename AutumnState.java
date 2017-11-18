@@ -37,7 +37,7 @@ public class AutumnState implements GameState {
 	private Font font;
 	GameContext c;
 	Player player;
-			int velX;
+	int velX;
 	int velY;
 	private boolean[] keyDown=new boolean[4];
 	LinkedList<Enemy> enemy = new LinkedList<>();
@@ -45,7 +45,6 @@ public class AutumnState implements GameState {
 	private int dx=1;
 	private int dy=1;
 	private volatile boolean pause = false;
-
 
 
 
@@ -85,7 +84,7 @@ public class AutumnState implements GameState {
                 }else if(blue == 255){ //blue
                     //handler.addObject(new Player(xx*32, yy*32, ID.Player, handler));
                 }
-                
+
             	}
         	}
     	}
@@ -178,7 +177,7 @@ public void processKey(KeyEvent e){
     public void lose(){}
     public void win(){c.setState(c.getWinState());}
     public void end(){}
-            public int getVelX(){ return velX; }
+    public int getVelX(){ return velX; }
 		public int getVelY(){ return velY; }
     public void setContext(GameContext cont){ this.c = cont;}
 		public void setPlayer(Player p){this.player=p;}
