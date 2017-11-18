@@ -32,12 +32,15 @@ public class GamePanel extends JPanel implements Runnable {
 
 		game = new GameContext();
 		camera = new Camera(0,0, PWIDTH, PHEIGHT);
+		//clipLoader = new ClipsLoader("clipsInfo.txt");
 
 		addMouseListener( new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				game.clickMouse(e);
 			}
 		});
+
+
 	} //GamePanel()
 
 	public void addNotify(){

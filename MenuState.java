@@ -35,10 +35,17 @@ public class MenuState implements GameState {
 	Font font;
 	Font font2;
 	Color color;
+	private MidisLoader midisLoader;
+	boolean volume;
 
 	public MenuState(){
 		font =new Font("arial", 1, 50);
 		font2 =new Font("arial", 1, 30);
+		midisLoader = new MidisLoader("midisInfo.txt");
+		midisLoader.play("music", true);
+		volume=true;
+
+
 	}
 
 	public MenuState(GameContext c){
@@ -58,10 +65,11 @@ public class MenuState implements GameState {
 		g.drawString("Help", 270, 290);
 		g.drawString("Quit", 270, 390);
 
+		if(volume){ g.drawImage(ImageLoader.getImageLoader().getImage("volumeon"),580,10,null);}
+		else{ g.drawImage(ImageLoader.getImageLoader().getImage("volumeoff"),580,10,null);}
+
 		g.drawRect(210, 150, 200, 64);
-
 		g.drawRect(210, 250, 200, 64);
-
 		g.drawRect(210, 350, 200, 64);
 	}
 
@@ -73,6 +81,16 @@ public class MenuState implements GameState {
 		int mx = e.getX();
 		int my = e.getY();
 
+		if (mouseOver(mx, my, 580, 10, 40, 40)){
+			if(volume){
+				volume=false;
+				midisLoader.pause();
+			}
+			else{
+				volume=true;
+				midisLoader.resume();
+			}
+		}
 		if (mouseOver(mx, my, 210, 150, 200, 64)){ load(); }
 		if (mouseOver(mx, my, 210, 350, 200, 64)){ System.exit(0); }//quit button
 		if (mouseOver(mx, my, 210, 250, 200, 64)){	help(); }

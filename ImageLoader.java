@@ -15,6 +15,8 @@ public class ImageLoader {
 	private BufferedImage hielito;
 	private BufferedImage margarite;
 	private BufferedImage tree;
+	private BufferedImage volumeOn;
+	private BufferedImage volumeOff;
 	public static ImageLoader imgL;
   private final static String IMAGE_DIR = "img/";
 
@@ -35,6 +37,9 @@ public class ImageLoader {
 			margarite= ImageIO.read(new File(IMAGE_DIR+"margarite.png"));
 
 			tree = ImageIO.read(new File(IMAGE_DIR+"tree.png"));
+
+			volumeOn = ImageIO.read(new File(IMAGE_DIR+"volumeOn.png"));
+			volumeOff = ImageIO.read(new File(IMAGE_DIR+"volumeOff.png"));
 
 		}
     catch(IOException e){}
@@ -58,6 +63,9 @@ public class ImageLoader {
 		if(image_name.equalsIgnoreCase("hielito")){ return hielito; }
 		if(image_name.equalsIgnoreCase("tree")){ return tree; }
 		if(image_name.equalsIgnoreCase("margarite")){ return margarite; }
+		if(image_name.equalsIgnoreCase("volumeon")){ return volumeOn; }
+		if(image_name.equalsIgnoreCase("volumeoff")){ return volumeOff; }
+
     return null;
 	}
 
