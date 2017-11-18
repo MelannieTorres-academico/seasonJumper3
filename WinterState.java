@@ -100,13 +100,13 @@ public class WinterState implements GameState {
 			g.drawImage(ImageLoader.getImageLoader().getImage("winter"),0,0,null);
 			//g.drawString("Winter",15,40);
 			player.render(g);
+
 			player.tick();
 			for(int i = 0; i  < enemy.size(); i++){
         		enemy.get(i).render(g);
         	}
         	goal.render(g);
-
-
+        	collision();
 		}
 
 		public void processKey(KeyEvent e){
@@ -142,6 +142,33 @@ public class WinterState implements GameState {
 
 		}
 
+
+		    	 private void collision(){
+        for(int i =0 ; i < enemy.size(); i++){
+            if(enemy.get(i).getID() == ID.Fuegito || enemy.get(i).getID() == ID.Hielito || enemy.get(i).getID() == ID.Espinita || enemy.get(i).getID() == ID.Hierbita){
+                //collision with Basic enemy.get(i)
+                if(player.getBounds().intersects(enemy.get(i).getBounds())){
+                    HUD.HEALTH-=2;
+                }
+            }
+             if(enemy.get(i).getID() == ID.Goal){
+                //collision with Basic enemy.get(i)
+                if(player.getBounds().intersects(enemy.get(i).getBounds())){
+                    HUD.level++;
+                }
+                
+            }
+             
+             if(enemy.get(i).getID() == ID.TreeAutumn || enemy.get(i).getID() == ID.TreeSpring || enemy.get(i).getID() == ID.TreeWinter || enemy.get(i).getID() == ID.TreeSummer){
+                //collision with Basic enemy.get(i)
+                 if(player.getBounds().intersects(enemy.get(i).getBounds())){
+                        player.moveX(player.getVelX()* -1);
+                        player.moveY(player.getVelY()* -1);
+                    }
+            }
+             
+        }
+    }
 
 
     public void clickMouse(MouseEvent e) {}

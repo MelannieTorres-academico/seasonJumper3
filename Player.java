@@ -14,16 +14,13 @@ public class Player  extends GameObject{
     private final int pHEIGHT = 32;
     private int dx = 1;
     private int dy = 1;
-
-    Handler handler;
     HUD hud;
 
 
     Random r = new Random();
 
-    public Player(int x, int y, ID id, Handler handler){
+    public Player(int x, int y, ID id){
         super(x, y, id);
-        this.handler = handler;
     }
 
     public Rectangle getBounds(){
@@ -55,40 +52,12 @@ public class Player  extends GameObject{
     public void tick(){
         x += velX;
         y += velY;
-        collision();
+        //collision();
         if(HUD.HEALTH == 0){
             System.exit(0);
         }
     }
 
-    private void collision(){
-        for(int i =0 ; i <handler.object.size(); i++){
-            GameObject tempObject = handler.object.get(i);
-            
-            if(tempObject.getID() == ID.Fuegito || tempObject.getID() == ID.Hielito || tempObject.getID() == ID.Espinita || tempObject.getID() == ID.Hierbita){
-                //collision with Basic Enemy
-                if(getBounds().intersects(tempObject.getBounds())){
-                    HUD.HEALTH-=2;
-                }
-            }
-             if(tempObject.getID() == ID.Goal){
-                //collision with Basic Enemy
-                if(getBounds().intersects(tempObject.getBounds())){
-                    HUD.level++;
-                }
-                
-            }
-             
-             if(tempObject.getID() == ID.TreeAutumn || tempObject.getID() == ID.TreeSpring || tempObject.getID() == ID.TreeWinter || tempObject.getID() == ID.TreeSummer){
-                //collision with Basic Enemy
-                 if(getBounds().intersects(tempObject.getBounds())){
-                        x += velX* -1;
-                        y += velY * -1;
-                    }
-            }
-             
-        }
-    }
 
     public void render(Graphics g){
         g.drawImage(ImageLoader.getImageLoader().getImage("margarite"),x,y,null);

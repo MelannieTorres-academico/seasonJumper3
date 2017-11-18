@@ -77,7 +77,7 @@ public class GameContext {
 		// summer.setHandler(handler);
 		// autumn.setHandler(handler);
 
-		player 				= new Player(200, 200, ID.Player, handler);
+		player = new Player(150, 150, ID.Player);
 
 		winter.setPlayer(player);
 		spring.setPlayer(player);

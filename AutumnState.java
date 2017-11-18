@@ -90,6 +90,34 @@ public class AutumnState implements GameState {
         	}
     	}
 
+
+    	 private void collision(){
+        for(int i =0 ; i < enemy.size(); i++){
+            if(enemy.get(i).getID() == ID.Fuegito || enemy.get(i).getID() == ID.Hielito || enemy.get(i).getID() == ID.Espinita || enemy.get(i).getID() == ID.Hierbita){
+                //collision with Basic enemy.get(i)
+                if(player.getBounds().intersects(enemy.get(i).getBounds())){
+                    HUD.HEALTH-=2;
+                }
+            }
+             if(enemy.get(i).getID() == ID.Goal){
+                //collision with Basic enemy.get(i)
+                if(player.getBounds().intersects(enemy.get(i).getBounds())){
+                    HUD.level++;
+                }
+                
+            }
+             
+             if(enemy.get(i).getID() == ID.TreeAutumn || enemy.get(i).getID() == ID.TreeSpring || enemy.get(i).getID() == ID.TreeWinter || enemy.get(i).getID() == ID.TreeSummer){
+                //collision with Basic enemy.get(i)
+                 if(player.getBounds().intersects(enemy.get(i).getBounds())){
+                        player.moveX(player.getVelX()* -1);
+                        player.moveY(player.getVelY()* -1);
+                    }
+            }
+             
+        }
+    }
+
 		public void draw(Graphics g){
 			//color=new Color(53, 171, 255);
 			//font=new Font("Verdana", Font.BOLD, 18);
@@ -102,6 +130,7 @@ public class AutumnState implements GameState {
         		enemy.get(i).render(g);
         	}
         	goal.render(g);
+        	collision();
 
 		}
 

@@ -93,6 +93,7 @@ public class SummerState implements GameState {
 			//font=new Font("Verdana", Font.BOLD, 18);
 			//g.setFont(font);
 			//g.setColor(color);
+			collision();
 			g.drawImage(ImageLoader.getImageLoader().getImage("summer"),0,0,null);
 			//g.drawString("Summer",15,40);
 			player.render(g);
@@ -135,6 +136,34 @@ public class SummerState implements GameState {
                 }
 
 		}
+
+
+		    	 private void collision(){
+        for(int i =0 ; i < enemy.size(); i++){
+            if(enemy.get(i).getID() == ID.Fuegito || enemy.get(i).getID() == ID.Hielito || enemy.get(i).getID() == ID.Espinita || enemy.get(i).getID() == ID.Hierbita){
+                //collision with Basic enemy.get(i)
+                if(player.getBounds().intersects(enemy.get(i).getBounds())){
+                    HUD.HEALTH-=2;
+                }
+            }
+             if(enemy.get(i).getID() == ID.Goal){
+                //collision with Basic enemy.get(i)
+                if(player.getBounds().intersects(enemy.get(i).getBounds())){
+                    HUD.level++;
+                }
+                
+            }
+             
+             if(enemy.get(i).getID() == ID.TreeAutumn || enemy.get(i).getID() == ID.TreeSpring || enemy.get(i).getID() == ID.TreeWinter || enemy.get(i).getID() == ID.TreeSummer){
+                //collision with Basic enemy.get(i)
+                 if(player.getBounds().intersects(enemy.get(i).getBounds())){
+                        player.moveX(player.getVelX()* -1);
+                        player.moveY(player.getVelY()* -1);
+                    }
+            }
+             
+        }
+    }
 
     public void clickMouse(MouseEvent e) {}
     public void menu(){}
