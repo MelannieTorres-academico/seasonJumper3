@@ -46,6 +46,11 @@ public class WinterState implements GameState {
 	LinkedList<Enemy> enemy = new LinkedList<>();
 	Goal goal;
 	private volatile boolean pause = false;
+	private boolean collision_left=false;
+	private boolean collision_right=false;
+	private boolean collision_up=false;
+	private boolean collision_down=false;
+	int t=0;
 
 
 
@@ -63,38 +68,58 @@ public class WinterState implements GameState {
 		public void draw(Graphics g){
 			g.drawImage(ImageLoader.getImageLoader().getImage("winter"),500,750,null);
 			player.render(g);
-			player.tick();
 			for(int i = 0; i  < enemy.size(); i++){
         enemy.get(i).render(g);
       }
     	goal.render(g);
-    	collision();
+    	win_lose();
 		}
 
 		public void processKey(KeyEvent e){
-
 			int key = e.getKeyCode();
 			if(pause==false){
-				if(key == KeyEvent.VK_SPACE){spring();}
-		    if(key == KeyEvent.VK_UP){player.setVely(-dy); keyDown[0] = true;}
-		    if(key == KeyEvent.VK_DOWN) {player.setVely(dy); keyDown[1] = true;}
-		    if(key == KeyEvent.VK_LEFT) {player.setVelX(-dx); keyDown[2] = true;}
-		    if(key == KeyEvent.VK_RIGHT) {player.setVelX(dx); keyDown[3] = true;}
+						if(key == KeyEvent.VK_SPACE){spring();}
+            if(key == KeyEvent.VK_UP){
+							collision_up=false;
+							for(int i =0 ; i < enemy.size(); i++){
+										if(enemy.get(i).getID() == ID.TreeWinter){
+												if(player.getOffsetBoundsUp().intersects(enemy.get(i).getBounds()) ){ collision_up=true; }
+									 }
+					 		 }
+							 if(!collision_up){  player.moveY(-10); }
+						}
+            if(key == KeyEvent.VK_DOWN) {
+							collision_down=false;
+							for(int i =0 ; i < enemy.size(); i++){
+										if(enemy.get(i).getID() == ID.TreeWinter){
+											 if(player.getOffsetBoundsDown().intersects(enemy.get(i).getBounds()) ){collision_down=true;}
+									 }
+							 }
+							 if(!collision_down){  player.moveY(10); }
+						 }
+            if(key == KeyEvent.VK_LEFT) {
+							collision_left=false;
+							for(int i =0 ; i < enemy.size(); i++){
+										if(enemy.get(i).getID() == ID.TreeWinter){
+											 if(player.getOffsetBoundsLeft().intersects(enemy.get(i).getBounds())){collision_left=true;}
+									 }
+					 		 }
+							 if(!collision_left){ player.moveX(-10); }
+						}
+            if(key == KeyEvent.VK_RIGHT) {
+							collision_right=false;
+							for(int i =0 ; i < enemy.size(); i++){
+										if(enemy.get(i).getID() == ID.TreeWinter){
+											 if( player.getOffsetBoundsRight().intersects(enemy.get(i).getBounds())){collision_right=true;}
+									 }
+							 }
+							 if(!collision_right){ player.moveX(10); }
+						 }
       }
-      if(key == KeyEvent.VK_P) { if(pause==false){pause=true;}else{pause=false;} }
-
+      if(key == KeyEvent.VK_P) { if(pause==false){ pause=true; }else{ pause=false; } }
 		}
 
-		public void keyReleased(KeyEvent e){
-			int key = e.getKeyCode();
-
-			if(key == KeyEvent.VK_UP){ keyDown[0] = false;}
-      if(key == KeyEvent.VK_DOWN) {keyDown[1] = false;}
-      if(key == KeyEvent.VK_LEFT) {keyDown[2] = false;}
-      if(key == KeyEvent.VK_RIGHT) {keyDown[3] = false;}
-      if(!keyDown[0] && !keyDown[1]){ player.setVely(0); }
-      if(!keyDown[2] && !keyDown[3]){ player.setVelX(0);}
-		}
+		public void keyReleased(KeyEvent e){ }
 
 
     public void clickMouse(MouseEvent e) {}
@@ -115,7 +140,7 @@ public class WinterState implements GameState {
 		public void tick(Camera camera){ camera.tick(player); }
 		public void setX(Camera camera){}
 		public void setY(Camera camera){}
-
+		public void closeMidi(){}
 
 
 		public void loadLevel(BufferedImage image){
@@ -128,53 +153,27 @@ public class WinterState implements GameState {
                 int green = (pixel >> 8) & 0xff;
                 int blue = (pixel) & 0xff;
 
-                if(green == 0 && red == 0 && blue ==0){}
-								else if(green == 255 && red == 255 && blue == 255){ //white
-                    enemy.add(new Enemy(xx*32, yy*32, ID.Hielito));
-                }
+                if(green == 255 && red == 255 && blue == 255){  enemy.add(new Enemy(xx*32, yy*32, ID.Hielito)); }
 								else if(red == 255 && blue == 255){}
-								else if(green == 255 && blue == 255){}
-								else if(green == 255 && red == 255){ //yellow
-                    goal = new Goal(xx*32, yy*32, ID.Goal);
-                }
-								else if(green == 255){ }
-								else if(red == 255){ //red
-                    enemy.add(new Enemy(xx*32, yy*32, ID.TreeWinter));
-                }
-								else if(blue == 255){}
+								else if(green == 255 && red == 255){   goal = new Goal(xx*32, yy*32, ID.Goal);}
+								else if(red == 255){  enemy.add(new Enemy(xx*32, yy*32, ID.TreeWinter)); }
 
             	}
         	}
     	}
 
-		private void collision(){
-				for(int i =0 ; i < enemy.size(); i++){
-						if(enemy.get(i).getID() == ID.Fuegito || enemy.get(i).getID() == ID.Hielito || enemy.get(i).getID() == ID.Espinita || enemy.get(i).getID() == ID.Hierbita){
-								//collision with Basic enemy.get(i)
-								if(player.getBounds().intersects(enemy.get(i).getBounds())){
-										HUD.HEALTH-=2;
-										lose();
-								}
-						}
-						 if(enemy.get(i).getID() == ID.Goal){
-								//collision with Basic enemy.get(i)
-								if(player.getBounds().intersects(enemy.get(i).getBounds())){
-										HUD.level++;
-								}
-						}
 
-						 if(enemy.get(i).getID() == ID.TreeAutumn || enemy.get(i).getID() == ID.TreeSpring || enemy.get(i).getID() == ID.TreeWinter || enemy.get(i).getID() == ID.TreeSummer){
-								//collision with Basic enemy.get(i)
-								 if(player.getOffsetBoundsUp().intersects(enemy.get(i).getBounds()) || player.getOffsetBoundsDown().intersects(enemy.get(i).getBounds())  || player.getOffsetBoundsLeft().intersects(enemy.get(i).getBounds()) || player.getOffsetBoundsRight().intersects(enemy.get(i).getBounds())){
-												player.moveX(player.getVelX()* -1);
-												player.moveY(player.getVelY()* -1);
+						private void win_lose(){
+							t++;
+	 					 if(t>100){
+							 for(int i =0 ; i < enemy.size(); i++){
+									 if(enemy.get(i).getID() == ID.Hielito && player.getBounds().intersects(enemy.get(i).getBounds())){
+											 player.setScore(0);
+											lose();
 										}
-						}
-
-						if(goal.getID() == ID.Goal){
-							if(player.getBounds().intersects(goal.getBounds())){win();}
-						}
-				}
-		}
+									 if(goal.getID() == ID.Goal && player.getBounds().intersects(goal.getBounds())){ win(); }
+							 }
+						 }
+				 		}
 
 }

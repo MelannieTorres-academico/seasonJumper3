@@ -110,6 +110,9 @@ public class MenuState implements GameState {
   public void end(){}
   public void setContext(GameContext cont){ this.c = cont;}
 	public void setPlayer(Player p){}
+	public void closeMidi(){
+		midisLoader.close();   // to shut down the sequencer
+	}
 
 	private boolean mouseOver(int mx, int my,int x, int y, int width, int heigth){
 		if (mx > x && mx < x + width){

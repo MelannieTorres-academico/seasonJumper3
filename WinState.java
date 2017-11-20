@@ -73,4 +73,5 @@ public class WinState implements GameState {
     public void tick(Camera camera){}
     public void setX(Camera camera){camera.setX(0);}
     public void setY(Camera camera){camera.setY(0);}
+		public void closeMidi(){}
 }

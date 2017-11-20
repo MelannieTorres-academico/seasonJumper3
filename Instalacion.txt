@@ -1,0 +1,4 @@
+Dé doble click en Game.jar o corra los siguientes comandos en su terminal:
+
+javac *.java
+java GamePanel

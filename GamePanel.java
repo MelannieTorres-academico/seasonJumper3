@@ -41,6 +41,8 @@ public class GamePanel extends JPanel implements Runnable {
 		});
 
 
+
+
 	} //GamePanel()
 
 	public void addNotify(){
@@ -154,6 +156,7 @@ public  void run(){
 				game.processKey(e);
 				if ((keyCode == KeyEvent.VK_ESCAPE) || (keyCode == KeyEvent.VK_END) || ((keyCode == KeyEvent.VK_C) && e.isControlDown()) ) {
 					end = true;
+					game.closeMidi();
 				}
 				if ((keyCode == KeyEvent.VK_P)){
 					if(pause==false){

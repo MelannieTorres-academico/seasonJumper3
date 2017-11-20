@@ -70,5 +70,6 @@ public class Player  extends GameObject{
     public int getScore(){ return hud.getScore();}
     public int getX(){return x;}
     public int getY(){return y;}
+    public void setScore(int ds){hud.setScore(ds);}
 
 }

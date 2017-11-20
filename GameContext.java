@@ -127,4 +127,5 @@ public class GameContext {
 	public void tick(Camera camera){currentState.tick(camera);}
 	public void setX(Camera camera){currentState.setX(camera);}
 	public void setY(Camera camera){currentState.setY(camera);}
+	public void closeMidi(){currentState.closeMidi();}
 }

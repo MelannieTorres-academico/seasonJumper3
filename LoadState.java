@@ -72,6 +72,7 @@ public class LoadState implements GameState {
       public void setContext(GameContext cont){ this.c = cont;}
       public void setPlayer(Player p){}
       public void tick(Camera camera){}
-        public void setX(Camera camera){}
-        public void setY(Camera camera){}
+      public void setX(Camera camera){}
+      public void setY(Camera camera){}
+      public void closeMidi(){}
 }

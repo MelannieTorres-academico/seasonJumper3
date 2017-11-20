@@ -52,5 +52,7 @@ interface GameState {
 		public void tick(Camera camera);
 		public void setX(Camera camera);
 		public void setY(Camera camera);
+		public void closeMidi();
+
 
 }
