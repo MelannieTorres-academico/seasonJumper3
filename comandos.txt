@@ -1,0 +1,2 @@
+jar cvmf mainClass.txt Game.jar *.class img Sounds
+java -jar Game.jar
